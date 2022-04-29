@@ -1,0 +1,15 @@
+{
+    "/mfe/app1": {
+        "target": "http://localhost:8001",
+        "pathRewrite": {
+            "^/mfe/app1/": "/"
+        },
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/api": {
+        "target": "https://demo.jasonmarston.co.uk",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
