@@ -5,7 +5,7 @@ const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
-    path.join(__dirname, '../../tsconfig.json'), [ /* mapped paths to share */ ]);
+    path.join(__dirname, '../../tsconfig.json'), []);
 
 module.exports = {
     output: {
@@ -33,7 +33,6 @@ module.exports = {
                 "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@angular/platform-browser": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "angular-auth-oidc-client": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-                "angular-auth-oidc-client/lib/iframe/check-session.service": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
                 ...sharedMappings.getDescriptors()
             })

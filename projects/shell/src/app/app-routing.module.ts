@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { startsWith, WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
-import { AutoLoginAllRoutesGuard } from 'angular-auth-oidc-client';
-import { AppComponent } from './app.component';
+import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
+import { AutoLoginAllRoutesWithRoleGuard, shellPath } from 'lib1';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   {
-    matcher: startsWith('component'),
+    matcher: shellPath('component'),
     component: WebComponentWrapper,
     data: {
       type: 'module',
       remoteEntry: '/mfe/app1/remoteEntry.js', //http://localhost:8000/mfe/app1/remoteEntry.js',
       exposedModule: './SampleModule',
-      elementName: 'super-element'
-    } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesGuard]
+      elementName: 'super-element',
+      role: 'USER'
+    } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesWithRoleGuard], canActivate: [AutoLoginAllRoutesWithRoleGuard],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

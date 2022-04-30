@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RemoteAppComponent } from './remote-app.component';
 
-describe('RemoteAppComponent', () => {
-  let component: RemoteAppComponent;
-  let fixture: ComponentFixture<RemoteAppComponent>;
+import { UnauthorisedComponent } from './unauthorised.component';
+
+describe('UnauthorisedComponent', () => {
+  let component: UnauthorisedComponent;
+  let fixture: ComponentFixture<UnauthorisedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemoteAppComponent ]
+      declarations: [ UnauthorisedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RemoteAppComponent);
+    fixture = TestBed.createComponent(UnauthorisedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

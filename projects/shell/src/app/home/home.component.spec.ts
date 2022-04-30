@@ -1,19 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RemoteAppComponent } from './remote-app.component';
 
-describe('RemoteAppComponent', () => {
-  let component: RemoteAppComponent;
-  let fixture: ComponentFixture<RemoteAppComponent>;
+import { HomeComponent } from './home.component';
+
+describe('HomeComponent', () => {
+  let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemoteAppComponent ]
+      declarations: [ HomeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RemoteAppComponent);
+    fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

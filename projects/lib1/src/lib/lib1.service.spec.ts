@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Lib1Service } from './lib1.service';
+import { AutoLoginAllRoutesWithRoleGuard } from './lib1.service';
 
-describe('Lib1Service', () => {
-  let service: Lib1Service;
+describe('AutoLoginAllRoutesWithRoleGuard', () => {
+  let service: AutoLoginAllRoutesWithRoleGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Lib1Service);
+    service = TestBed.inject(AutoLoginAllRoutesWithRoleGuard);
   });
 
   it('should be created', () => {
