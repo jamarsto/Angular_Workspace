@@ -37,3 +37,11 @@ export function shellPath(shellPath: string): UrlMatcher {
     return null;
   }
 }
+
+export function pathPrefix(destination: string, url: UrlSegment[]) {
+  const fullUrl = url.map(u => u.path).join('/');
+  if(!fullUrl.includes('/')) {
+    return '.' + destination;
+  }
+  return '/' + url[0] + destination;
+}

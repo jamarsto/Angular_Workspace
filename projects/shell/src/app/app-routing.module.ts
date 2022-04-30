@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
 import { AutoLoginAllRoutesWithRoleGuard, shellPath } from 'lib1';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
+import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
       role: 'USER'
     } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesWithRoleGuard], canActivate: [AutoLoginAllRoutesWithRoleGuard],
   },
+  { matcher: shellPath('login'), component: LoginComponent },
+  { matcher: shellPath('unauthorised'), component: UnauthorisedComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

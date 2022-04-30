@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Router,
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { OidcSecurityService, AutoLoginAllRoutesGuard } from 'angular-auth-oidc-client';
+import { pathPrefix } from './lib1.function';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,6 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
   }
 
   private checkRole(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
-    console.warn('checking role')
     if(typeof isAuthenticated !== 'boolean') {
       return of(isAuthenticated);
     }
@@ -51,10 +51,10 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           if(isInRole === true) {
             return true;
           }
-          return this.router.parseUrl('./unauthorized');
+          return this.router.parseUrl(pathPrefix('/unauthorised', next.url));
         }))
     }
-    return of(this.router.parseUrl('./login'));
+    return of(this.router.parseUrl(pathPrefix('/login', next.url)));
   }
 
   private isInRole(role: string): Observable<boolean> {
