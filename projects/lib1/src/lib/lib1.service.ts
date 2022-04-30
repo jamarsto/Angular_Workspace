@@ -58,6 +58,9 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
   }
 
   private isInRole(role: string): Observable<boolean> {
+    if(typeof role === 'undefined' || role === '') {
+      return of(true);
+    }
     return this
         .oidcSecurityService
         .userData$

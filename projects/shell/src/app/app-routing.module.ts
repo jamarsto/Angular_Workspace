@@ -18,7 +18,7 @@ const routes: Routes = [
       exposedModule: './SampleModule',
       elementName: 'super-element',
       role: 'USER'
-    } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesWithRoleGuard], canActivate: [AutoLoginAllRoutesWithRoleGuard],
+    } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesWithRoleGuard], canActivate: [AutoLoginAllRoutesWithRoleGuard]
   },
   { matcher: shellPath('login'), component: LoginComponent },
   { matcher: shellPath('unauthorised'), component: UnauthorisedComponent },
