@@ -13,10 +13,10 @@ const routes: Routes = [
     component: WebComponentWrapper,
     data: {
       type: 'module',
-      remoteEntry: '/mfe/app1/remoteEntry.js', //http://localhost:8000/mfe/app1/remoteEntry.js',
+      remoteEntry: '/mfe/app1/remoteEntry.js',
       exposedModule: './SampleModule',
       elementName: 'super-element',
-      role: 'USER'
+      role: ''
     } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesWithRoleGuard], canActivate: [AutoLoginAllRoutesWithRoleGuard]
   },
   { matcher: shellPath('unauthorised'), component: UnauthorisedComponent },
