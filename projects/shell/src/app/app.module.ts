@@ -5,14 +5,12 @@ import { AuthConfigModule } from './auth/auth-config.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
 import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
-    LoginComponent,
     UnauthorisedComponent,
     HomeComponent
   ],
