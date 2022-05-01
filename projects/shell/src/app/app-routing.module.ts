@@ -19,7 +19,7 @@ const routes: Routes = [
       role: ''
     } as WebComponentWrapperOptions, canLoad: [AutoLoginAllRoutesWithRoleGuard], canActivate: [AutoLoginAllRoutesWithRoleGuard]
   },
-  { matcher: shellPath('unauthorised'), component: UnauthorisedComponent },
+  { path: 'unauthorised', component: UnauthorisedComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

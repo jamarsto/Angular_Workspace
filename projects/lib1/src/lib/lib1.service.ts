@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Router, RouterStateSnapshot, UrlMatcher, UrlSegment, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { OidcSecurityService, AutoLoginAllRoutesGuard } from 'angular-auth-oidc-client';
-import { pathPrefix } from './lib1.function';
 
 @Injectable({
   providedIn: 'root'
@@ -51,7 +50,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           if(isInRole === true) {
             return true;
           }
-          return this.router.parseUrl(pathPrefix('/unauthorised', next.url));
+          return this.router.parseUrl(this.pathPrefix('/unauthorised', next.url));
         }))
     }
     return of(isAuthenticated);
@@ -71,5 +70,13 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           }
           return false;
         }));
+  }
+
+  private pathPrefix(destination: string, url: UrlSegment[]): string {
+    const fullUrl = url.map(u => u.path).join('/');
+    if(!fullUrl.includes('/')) {
+      return '.' + destination;
+    }
+    return '/' + url[0] + destination;
   }
 }
