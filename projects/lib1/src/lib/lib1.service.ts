@@ -54,7 +54,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           return this.router.parseUrl(pathPrefix('/unauthorised', next.url));
         }))
     }
-    return of(this.router.parseUrl(pathPrefix('/login', next.url)));
+    return of(isAuthenticated);
   }
 
   private isInRole(role: string): Observable<boolean> {
