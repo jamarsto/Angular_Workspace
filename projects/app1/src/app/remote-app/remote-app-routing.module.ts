@@ -7,7 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 
 const routes: Routes = [
-  { matcher: modulePath(''), component: HomeComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: '' } }, //'USER' } },
+  { matcher: modulePath(''), component: HomeComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], /* data: { role: '' } */ /* data {'USER' } */ },
   { matcher: modulePath('path'), component: PathComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: 'USER' } },
   { matcher: modulePath('unauthorised'), component: UnauthorisedComponent },
   { path: '**', component: NotFoundComponent }
