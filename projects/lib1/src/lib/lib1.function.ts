@@ -2,7 +2,7 @@ import { UrlMatcher, UrlSegment } from '@angular/router';
 
 export function modulePath(modulePath: string): UrlMatcher {
   return (url: UrlSegment[]) => {
-    const fullUrl = url.map(u => u.path).join('/');
+    const fullUrl: string = url.map(u => u.path).join('/');
 
     if(!fullUrl.includes('/')) {
       if(modulePath === '') {
@@ -11,8 +11,8 @@ export function modulePath(modulePath: string): UrlMatcher {
       return null;
     }
 
-    const pattern = '^([-a-zA-Z0-9._~]+)/' + modulePath + '$';
-    const regex = new RegExp(pattern);
+    const pattern: string = '^([-a-zA-Z0-9._~]+)/' + modulePath + '$';
+    const regex: RegExp = new RegExp(pattern);
 
     if(regex.test(fullUrl)) {
       return ({ consumed: url });
@@ -24,7 +24,7 @@ export function modulePath(modulePath: string): UrlMatcher {
 
 export function shellPath(shellPath: string): UrlMatcher {
   return (url: UrlSegment[]) => {
-    const fullUrl = url.map(u => u.path).join('/');
+    const fullUrl: string = url.map(u => u.path).join('/');
     if(!fullUrl.includes('/')) {
       if(shellPath === fullUrl) {
         return ({ consumed: url });
