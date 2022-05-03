@@ -108,7 +108,7 @@ export class AutoLoginPartialRoutesWithRoleGuard implements CanActivate, CanActi
         .oidcSecurityService
         .userData$
         .pipe(map(({ userData }) => {
-          const roles: string[] = userData.roles;
+          const roles = userData.roles;
           if(typeof roles !== 'undefined' && roles != null && roles.indexOf(role) >= 0) {
             return true;
           }

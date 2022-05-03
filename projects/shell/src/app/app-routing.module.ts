@@ -20,6 +20,7 @@ const routes: Routes = [
     } as WebComponentWrapperOptions
   },
   { path: 'unauthorised', component: UnauthorisedComponent },
+  { path: 'unauthorized', component: UnauthorisedComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
