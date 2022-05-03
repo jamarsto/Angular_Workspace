@@ -49,7 +49,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           if(isInRole === true) {
             return true;
           }
-          return this.router.parseUrl(this.pathPrefix('/unauthorised', next.url));
+          return this.router.parseUrl(this.pathPrefix('/unauthorized', next.url));
         }));
   }
 
@@ -67,7 +67,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           if(isInRole === true) {
             return true;
           }
-          return this.router.parseUrl(this.pathPrefix('/unauthorised', url));
+          return this.router.parseUrl(this.pathPrefix('/unauthorized', url));
         }));
   }
 
