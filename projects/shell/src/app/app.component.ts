@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +7,8 @@ import { OidcSecurityService} from 'angular-auth-oidc-client';
 })
 export class AppComponent {
   title = 'shell';
-  constructor(public oidcSecurityService: OidcSecurityService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken}) => {
-      console.log('Shell: app authenticated', isAuthenticated);
-      console.log(`Shell: Current access token is '${accessToken}'`);
-    });
   }
 }
