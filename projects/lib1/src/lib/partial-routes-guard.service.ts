@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { OidcSecurityService, AutoLoginAllRoutesGuard } from 'angular-auth-oidc-client';
+import { OidcSecurityService, AutoLoginPartialRoutesGuard } from 'angular-auth-oidc-client';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivateChild, CanLoad {
+export class AutoLoginPartialRoutesWithRoleGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(
     private oidcSecurityService: OidcSecurityService,
     private router: Router,
-    private autoLoginAllRoutesGuard: AutoLoginAllRoutesGuard
+    private autoLoginPartialRoutesGuard: AutoLoginPartialRoutesGuard,
   ) { }
 
   canActivate(
       next: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this
-        .autoLoginAllRoutesGuard
+        .autoLoginPartialRoutesGuard
         .canActivate(next, state)
         .pipe(mergeMap(result => this.checkRoleForActivate(result, next)));
   }
@@ -27,14 +27,14 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this
-        .autoLoginAllRoutesGuard
+        .autoLoginPartialRoutesGuard
         .canActivateChild(next, state)
         .pipe(mergeMap(result => this.checkRoleForActivateChild(result, next)));
   }
 
   canLoad(route: Route, url: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this
-        .autoLoginAllRoutesGuard
+        .autoLoginPartialRoutesGuard
         .canLoad()
         .pipe(mergeMap(result => this.checkRoleForLoad(result, route, url)));
   }
@@ -119,7 +119,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
   private pathPrefix(destination: string, url: UrlSegment[]): string {
     const fullUrl = url.map(u => u.path).join('/');
     if(!fullUrl.includes('/')) {
-      return '.' + destination;
+      return destination;
     }
     return '/' + url[0] + destination;
   }
