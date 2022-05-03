@@ -3,7 +3,6 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, 
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { OidcSecurityService, AutoLoginAllRoutesGuard } from 'angular-auth-oidc-client';
-import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/template';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
     return this
         .autoLoginAllRoutesGuard
         .canActivate(next, state)
-        .pipe(mergeMap(result => this.checkRole(result, next)));
+        .pipe(mergeMap(result => this.checkRoleForActivate(result, next)));
   }
 
   canActivateChild(
@@ -30,7 +29,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
     return this
         .autoLoginAllRoutesGuard
         .canActivateChild(next, state)
-        .pipe(mergeMap(result => this.checkRole(result, next)));
+        .pipe(mergeMap(result => this.checkRoleForActivateChild(result, next)));
   }
 
   canLoad(route: Route, url: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -38,6 +37,24 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
         .autoLoginAllRoutesGuard
         .canLoad()
         .pipe(mergeMap(result => this.checkRoleForLoad(result, route, url)));
+  }
+
+  private checkRoleForActivate(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
+    if(typeof isAuthenticated !== 'boolean' || isAuthenticated !== true) {
+      return of(isAuthenticated);
+    }
+    return this
+        .isInRole(next.data['role'])
+        .pipe(map(isInRole => {
+          if(isInRole === true) {
+            return true;
+          }
+          return this.router.parseUrl(this.pathPrefix('/unauthorised', next.url));
+        }));
+  }
+
+  private checkRoleForActivateChild(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
+    return this.checkRoleForActivate(isAuthenticated, next);
   }
 
   private checkRoleForLoad(isAuthenticated: boolean | UrlTree, next: Route, url: UrlSegment[]): Observable<boolean | UrlTree> {
@@ -51,20 +68,6 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
             return true;
           }
           return this.router.parseUrl(this.pathPrefix('/unauthorised', url));
-        }));
-  }
-
-  private checkRole(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
-    if(typeof isAuthenticated !== 'boolean' || isAuthenticated !== true) {
-      return of(isAuthenticated);
-    }
-    return this
-        .isInRole(next.data['role'])
-        .pipe(map(isInRole => {
-          if(isInRole === true) {
-            return true;
-          }
-          return this.router.parseUrl(this.pathPrefix('/unauthorised', next.url));
         }));
   }
 
