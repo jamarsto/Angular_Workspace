@@ -9,7 +9,6 @@ import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/templa
   providedIn: 'root'
 })
 export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivateChild,CanLoad {
-
   constructor(
     private oidcSecurityService: OidcSecurityService,
     private router: Router,
@@ -41,46 +40,51 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
   }
 
   private checkRole(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
-    if(typeof isAuthenticated !== 'boolean') {
+    if(typeof isAuthenticated !== 'boolean' || isAuthenticated !== true) {
       return of(isAuthenticated);
     }
-    if(isAuthenticated === true) {
-      return this
+    return this
         .isInRole(next.data['role'])
         .pipe(map(isInRole => {
           if(isInRole === true) {
             return true;
           }
           return this.router.parseUrl(this.pathPrefix('/unauthorised', next.url));
-        }))
-    }
-    return of(isAuthenticated);
+        }));
   }
 
   private isInRole(role: string | string[]): Observable<boolean> {
-    if(typeof role === 'undefined' || role === null || role === '') {
+    if(typeof role === 'object') {
+      return this.isInRoleArray(role);
+    }
+    return this.isInRoleString(role);
+  }
+
+  private isInRoleArray(role: string[]): Observable<boolean> {
+    if(role.length === 0) {
       return of(true);
     }
-    if(typeof role === 'object') {
-      if(role.length === 0) {
-        return of(true);
-      }
-      return this
-          .oidcSecurityService
-          .userData$
-          .pipe(map(({ userData }) => {
-            const roles: string[] = userData.roles;
-            if(typeof roles !== 'undefined' && roles != null) {
-              var matchedAll: boolean = true;
-              role.forEach((strRole) => {
-                if(!(typeof strRole === 'undefined' || strRole === null || strRole === '' || roles.indexOf(strRole))) {
-                  matchedAll = false;
-                }
-              });
-              return matchedAll;
-            }
-            return false;
-          }));
+    return this
+        .oidcSecurityService
+        .userData$
+        .pipe(map(({ userData }) => {
+          const roles: string[] = userData.roles;
+          if(typeof roles !== 'undefined' && roles != null) {
+            var matchedAll: boolean = true;
+            role.forEach((strRole) => {
+              if(!(typeof strRole === 'undefined' || strRole === null || strRole.trim() === '' || roles.indexOf(strRole) >= 0)) {
+                matchedAll = false;
+              }
+            });
+            return matchedAll;
+          }
+          return false;
+        }));
+  }
+
+  private isInRoleString(role: string): Observable<boolean> {
+    if(typeof role === 'undefined' || role === null || role.trim() === '') {
+      return of(true);
     }
     return this
         .oidcSecurityService
