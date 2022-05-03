@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { OidcSecurityService, AutoLoginAllRoutesGuard } from 'angular-auth-oidc-client';
@@ -8,7 +8,7 @@ import { resolveSanitizationFn } from '@angular/compiler/src/render3/view/templa
 @Injectable({
   providedIn: 'root'
 })
-export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivateChild,CanLoad {
+export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(
     private oidcSecurityService: OidcSecurityService,
     private router: Router,
@@ -33,10 +33,25 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
         .pipe(mergeMap(result => this.checkRole(result, next)));
   }
 
-  canLoad(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canLoad(route: Route, url: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this
         .autoLoginAllRoutesGuard
-        .canLoad();
+        .canLoad()
+        .pipe(mergeMap(result => this.checkRoleForLoad(result, route, url)));
+  }
+
+  private checkRoleForLoad(isAuthenticated: boolean | UrlTree, next: Route, url: UrlSegment[]): Observable<boolean | UrlTree> {
+    if(typeof isAuthenticated !== 'boolean' || isAuthenticated !== true || typeof next.data === 'undefined') {
+      return of(isAuthenticated);
+    }
+    return this
+        .isInRole(next.data['role'])
+        .pipe(map(isInRole => {
+          if(isInRole === true) {
+            return true;
+          }
+          return this.router.parseUrl(this.pathPrefix('/unauthorised', url));
+        }));
   }
 
   private checkRole(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
