@@ -3,21 +3,23 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
-import { PathComponent } from './path/path.component';
+import { AuthConfigModule } from '../auth/auth-config.module';
+import { RemoteAppComponent } from './remote-app.component';
+import { ShellComponent } from './shell/shell.component';
 import { HomeComponent } from './home/home.component';
+import { PathComponent } from './path/path.component';
+import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SampleRoutingModule } from './remote-app-routing.module';
-import { RemoteAppComponent } from './remote-app.component';
-import { AuthConfigModule } from '../auth/auth-config.module';
-import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 
 @NgModule({
   declarations: [
-    PathComponent,
+    RemoteAppComponent,
+    ShellComponent,
     HomeComponent,
-    NotFoundComponent,
+    PathComponent,
     UnauthorisedComponent,
-    RemoteAppComponent
+    NotFoundComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

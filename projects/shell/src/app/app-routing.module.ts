@@ -17,7 +17,7 @@ const routes: Routes = [
       exposedModule: './SampleModule',
       elementName: 'super-element',
       role: 'ADMIN'
-    } as WebComponentWrapperOptions, canActivate: [AutoLoginPartialRoutesWithRoleGuard]
+    } as WebComponentWrapperOptions
   },
   { path: 'unauthorised', component: UnauthorisedComponent },
   { path: '**', component: NotFoundComponent }
