@@ -7,8 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AutoLoginPartialRoutesWithRoleGuard]},
+  { path: '', component: HomeComponent }, // unprotected entrypoint
   {
     matcher: shellPath('component'),
     component: WebComponentWrapper,
