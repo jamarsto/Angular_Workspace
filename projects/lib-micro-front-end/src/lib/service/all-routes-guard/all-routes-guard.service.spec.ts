@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AutoLoginAllRoutesWithRoleGuard } from './lib1.service';
+import { AutoLoginAllRoutesWithRoleGuard } from './all-routes-guard.service';
 
 describe('AutoLoginAllRoutesWithRoleGuard', () => {
   let service: AutoLoginAllRoutesWithRoleGuard;

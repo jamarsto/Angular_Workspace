@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OidcSecurityService} from 'angular-auth-oidc-client';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './remote-app.component.html',
@@ -7,7 +7,12 @@ import { OidcSecurityService} from 'angular-auth-oidc-client';
 })
 export class RemoteAppComponent implements OnInit {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this.router.navigateByUrl(location.pathname.substr(1));
+    window.addEventListener('popstate', () => {
+      this.router.navigateByUrl(location.pathname.substr(1));
+    });
+  }
 }

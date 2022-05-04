@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AuthConfigModule } from 'lib-micro-front-end';
 import { AppComponent } from './app.component';
-import { AuthConfigModule } from './auth/auth-config.module';
 import { SampleRoutingModule } from './remote-app/remote-app-routing.module';
 
 @NgModule({
@@ -10,9 +10,9 @@ import { SampleRoutingModule } from './remote-app/remote-app-routing.module';
   ],
   providers: [],
   imports: [
+    AuthConfigModule,
     BrowserModule,
     SampleRoutingModule,
-    AuthConfigModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

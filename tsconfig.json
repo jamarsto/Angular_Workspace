@@ -9,9 +9,10 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "paths": {
-      "lib1": [
-        "dist/lib1/lib1",
-        "dist/lib1"
+      "lib-micro-front-end": [
+        //"dist/lib1/lib1.d.ts",
+        "dist/lib-micro-front-end/lib-micro-front-end",
+        "dist/lib-micro-front-end"
       ]
     },
     "noFallthroughCasesInSwitch": true,

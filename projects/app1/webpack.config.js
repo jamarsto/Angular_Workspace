@@ -5,7 +5,7 @@ const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
-    path.join(__dirname, '../../tsconfig.json'), []);
+    path.join(__dirname, '../../tsconfig.json'), ['../lib-micro-front-end']);
 
 module.exports = {
     output: {
@@ -29,7 +29,7 @@ module.exports = {
             name: "app1",
             filename: "remoteEntry.js",
             exposes: {
-                './SampleModule': './projects/app1/src/app/remote-app/remote-app-bootstrap.ts',
+                './RemoteAppModule': './projects/app1/src/app/remote-app/remote-app-bootstrap.ts',
             },
             shared: share({
                 "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },

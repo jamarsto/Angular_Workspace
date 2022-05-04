@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { MicroFrontEndModule } from 'lib-micro-front-end';
 import { AuthConfigModule } from '../auth/auth-config.module';
 import { RemoteAppComponent } from './remote-app.component';
 import { ShellComponent } from './shell/shell.component';
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
-import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { SampleRoutingModule } from './remote-app-routing.module';
 
 @NgModule({
@@ -18,8 +17,6 @@ import { SampleRoutingModule } from './remote-app-routing.module';
     ShellComponent,
     HomeComponent,
     PathComponent,
-    UnauthorisedComponent,
-    NotFoundComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -30,15 +27,14 @@ import { SampleRoutingModule } from './remote-app-routing.module';
     BrowserModule,
     CommonModule,
     SampleRoutingModule,
+    MicroFrontEndModule,
   ]
 })
-export class SampleModule implements DoBootstrap {
-  constructor(private injector: Injector, public oidcSecurityService: OidcSecurityService) {
+export class RemoteAppModule implements DoBootstrap {
+  constructor(private injector: Injector, private oidcSecurityService: OidcSecurityService) {
     const element = createCustomElement(RemoteAppComponent, {injector: this.injector});
-    customElements.define("super-element", element);
+    customElements.define("mfe-app1", element);
     this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken}) => {
-      console.log('App1: app authenticated', isAuthenticated);
-      console.log(`App1: Current access token is '${accessToken}'`);
     });
   }
   ngDoBootstrap() { }
