@@ -6,10 +6,11 @@ import { shellPath } from '../shellPath/shell-path.function';
 export function microFrontEnd(name: string, guard?: any[], roles?: string[] | string) : Route {
   // provided a role without a guard. Hence don't try to guard
   if(
-    typeof guard === 'undefined'
-    || guard === null
-    || guard.length === 0
-    || (guard.length > 0 && typeof guard[0] === 'string')) {
+      typeof guard === 'undefined'
+      || guard === null
+      || guard.length === 0
+      || (guard.length > 0 && typeof guard[0] === 'string')) {
+    console.warn('microFrontEnd: Role array provided without a guard.  Ignoring role array.');
     return {
       matcher: shellPath(name),
       component: WebComponentWrapper,
