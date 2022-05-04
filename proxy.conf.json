@@ -1,16 +1,16 @@
 {
-    "/mfe/app1": {
+    "/mfe/app-app1": {
         "target": "http://localhost:8001",
         "pathRewrite": {
-            "^/mfe/app1/": "/"
+            "^/mfe/app-app1/": "/"
         },
         "secure": false,
         "changeOrigin": true
     },
-    "/mfe/app2": {
+    "/mfe/app-app2": {
         "target": "http://localhost:8002",
         "pathRewrite": {
-            "^/mfe/app2/": "/"
+            "^/mfe/app-app2/": "/"
         },
         "secure": false,
         "changeOrigin": true

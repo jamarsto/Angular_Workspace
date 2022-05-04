@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "app1": {
+        "app-app1": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -13,28 +13,28 @@
                     "strict": true
                 }
             },
-            "root": "projects/app1",
-            "sourceRoot": "projects/app1/src",
+            "root": "projects/app-app1",
+            "sourceRoot": "projects/app-app1/src",
             "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "ngx-build-plus:browser",
                     "options": {
-                        "outputPath": "dist/app1",
-                        "index": "projects/app1/src/index.html",
-                        "main": "projects/app1/src/main.ts",
-                        "polyfills": "projects/app1/src/polyfills.ts",
-                        "tsConfig": "projects/app1/tsconfig.app.json",
+                        "outputPath": "dist/app-app1",
+                        "index": "projects/app-app1/src/index.html",
+                        "main": "projects/app-app1/src/main.ts",
+                        "polyfills": "projects/app-app1/src/polyfills.ts",
+                        "tsConfig": "projects/app-app1/tsconfig.app.json",
                         "inlineStyleLanguage": "sass",
                         "assets": [
-                            "projects/app1/src/favicon.ico",
-                            "projects/app1/src/assets"
+                            "projects/app-app1/src/favicon.ico",
+                            "projects/app-app1/src/assets"
                         ],
                         "styles": [
-                            "projects/app1/src/styles.sass"
+                            "projects/app-app1/src/styles.sass"
                         ],
                         "scripts": [],
-                        "extraWebpackConfig": "projects/app1/webpack.config.js",
+                        "extraWebpackConfig": "projects/app-app1/webpack.config.js",
                         "commonChunk": false
                     },
                     "configurations": {
@@ -51,11 +51,11 @@
                                 }
                             ],
                             "fileReplacements": [{
-                                "replace": "projects/app1/src/environments/environment.ts",
-                                "with": "projects/app1/src/environments/environment.prod.ts"
+                                "replace": "projects/app-app1/src/environments/environment.ts",
+                                "with": "projects/app-app1/src/environments/environment.prod.ts"
                             }],
                             "outputHashing": "all",
-                            "extraWebpackConfig": "projects/app1/webpack.prod.config.js"
+                            "extraWebpackConfig": "projects/app-app1/webpack.prod.config.js"
                         },
                         "development": {
                             "buildOptimizer": false,
@@ -72,48 +72,48 @@
                     "builder": "ngx-build-plus:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "app1:build:production",
-                            "extraWebpackConfig": "projects/app1/webpack.prod.config.js"
+                            "browserTarget": "app-app1:build:production",
+                            "extraWebpackConfig": "projects/app-app1/webpack.prod.config.js"
                         },
                         "development": {
-                            "browserTarget": "app1:build:development"
+                            "browserTarget": "app-app1:build:development"
                         }
                     },
                     "defaultConfiguration": "development",
                     "options": {
                         "port": 8001,
                         "publicHost": "http://localhost:8001",
-                        "extraWebpackConfig": "projects/app1/webpack.config.js"
+                        "extraWebpackConfig": "projects/app-app1/webpack.config.js"
                     }
                 },
                 "extract-i18n": {
                     "builder": "ngx-build-plus:extract-i18n",
                     "options": {
-                        "browserTarget": "app1:build",
-                        "extraWebpackConfig": "projects/app1/webpack.config.js"
+                        "browserTarget": "app-app1:build",
+                        "extraWebpackConfig": "projects/app-app1/webpack.config.js"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/app1/src/test.ts",
-                        "polyfills": "projects/app1/src/polyfills.ts",
-                        "tsConfig": "projects/app1/tsconfig.spec.json",
-                        "karmaConfig": "projects/app1/karma.conf.js",
+                        "main": "projects/app-app1/src/test.ts",
+                        "polyfills": "projects/app-app1/src/polyfills.ts",
+                        "tsConfig": "projects/app-app1/tsconfig.spec.json",
+                        "karmaConfig": "projects/app-app1/karma.conf.js",
                         "inlineStyleLanguage": "sass",
                         "assets": [
-                            "projects/app1/src/favicon.ico",
-                            "projects/app1/src/assets"
+                            "projects/app-app1/src/favicon.ico",
+                            "projects/app-app1/src/assets"
                         ],
                         "styles": [
-                            "projects/app1/src/styles.sass"
+                            "projects/app-app1/src/styles.sass"
                         ],
                         "scripts": []
                     }
                 }
             }
         },
-        "app2": {
+        "app-app2": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -123,28 +123,28 @@
                     "strict": true
                 }
             },
-            "root": "projects/app2",
-            "sourceRoot": "projects/app2/src",
+            "root": "projects/app-app2",
+            "sourceRoot": "projects/app-app2/src",
             "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "ngx-build-plus:browser",
                     "options": {
-                        "outputPath": "dist/app2",
-                        "index": "projects/app2/src/index.html",
-                        "main": "projects/app2/src/main.ts",
-                        "polyfills": "projects/app2/src/polyfills.ts",
-                        "tsConfig": "projects/app2/tsconfig.app.json",
+                        "outputPath": "dist/app-app2",
+                        "index": "projects/app-app2/src/index.html",
+                        "main": "projects/app-app2/src/main.ts",
+                        "polyfills": "projects/app-app2/src/polyfills.ts",
+                        "tsConfig": "projects/app-app2/tsconfig.app.json",
                         "inlineStyleLanguage": "sass",
                         "assets": [
-                            "projects/app2/src/favicon.ico",
-                            "projects/app2/src/assets"
+                            "projects/app-app2/src/favicon.ico",
+                            "projects/app-app2/src/assets"
                         ],
                         "styles": [
-                            "projects/app2/src/styles.sass"
+                            "projects/app-app2/src/styles.sass"
                         ],
                         "scripts": [],
-                        "extraWebpackConfig": "projects/app2/webpack.config.js",
+                        "extraWebpackConfig": "projects/app-app2/webpack.config.js",
                         "commonChunk": false
                     },
                     "configurations": {
@@ -161,11 +161,11 @@
                                 }
                             ],
                             "fileReplacements": [{
-                                "replace": "projects/app2/src/environments/environment.ts",
-                                "with": "projects/app2/src/environments/environment.prod.ts"
+                                "replace": "projects/app-app2/src/environments/environment.ts",
+                                "with": "projects/app-app2/src/environments/environment.prod.ts"
                             }],
                             "outputHashing": "all",
-                            "extraWebpackConfig": "projects/app2/webpack.prod.config.js"
+                            "extraWebpackConfig": "projects/app-app2/webpack.prod.config.js"
                         },
                         "development": {
                             "buildOptimizer": false,
@@ -182,41 +182,41 @@
                     "builder": "ngx-build-plus:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "app2:build:production",
-                            "extraWebpackConfig": "projects/app2/webpack.prod.config.js"
+                            "browserTarget": "app-app2:build:production",
+                            "extraWebpackConfig": "projects/app-app2/webpack.prod.config.js"
                         },
                         "development": {
-                            "browserTarget": "app2:build:development"
+                            "browserTarget": "app-app2:build:development"
                         }
                     },
                     "defaultConfiguration": "development",
                     "options": {
                         "port": 8002,
                         "publicHost": "http://localhost:8002",
-                        "extraWebpackConfig": "projects/app2/webpack.config.js"
+                        "extraWebpackConfig": "projects/app-app2/webpack.config.js"
                     }
                 },
                 "extract-i18n": {
                     "builder": "ngx-build-plus:extract-i18n",
                     "options": {
-                        "browserTarget": "app2:build",
-                        "extraWebpackConfig": "projects/app2/webpack.config.js"
+                        "browserTarget": "app-app2:build",
+                        "extraWebpackConfig": "projects/app-app2/webpack.config.js"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/app2/src/test.ts",
-                        "polyfills": "projects/app2/src/polyfills.ts",
-                        "tsConfig": "projects/app2/tsconfig.spec.json",
-                        "karmaConfig": "projects/app2/karma.conf.js",
+                        "main": "projects/app-app2/src/test.ts",
+                        "polyfills": "projects/app-app2/src/polyfills.ts",
+                        "tsConfig": "projects/app-app2/tsconfig.spec.json",
+                        "karmaConfig": "projects/app-app2/karma.conf.js",
                         "inlineStyleLanguage": "sass",
                         "assets": [
-                            "projects/app2/src/favicon.ico",
-                            "projects/app2/src/assets"
+                            "projects/app-app2/src/favicon.ico",
+                            "projects/app-app2/src/assets"
                         ],
                         "styles": [
-                            "projects/app2/src/styles.sass"
+                            "projects/app-app2/src/styles.sass"
                         ],
                         "scripts": []
                     }
@@ -254,7 +254,7 @@
                 }
             }
         },
-        "shell": {
+        "app-shell": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -264,28 +264,28 @@
                     "strict": true
                 }
             },
-            "root": "projects/shell",
-            "sourceRoot": "projects/shell/src",
+            "root": "projects/app-shell",
+            "sourceRoot": "projects/app-shell/src",
             "prefix": "app",
             "architect": {
                 "build": {
                     "builder": "ngx-build-plus:browser",
                     "options": {
-                        "outputPath": "dist/shell",
-                        "index": "projects/shell/src/index.html",
-                        "main": "projects/shell/src/main.ts",
-                        "polyfills": "projects/shell/src/polyfills.ts",
-                        "tsConfig": "projects/shell/tsconfig.app.json",
+                        "outputPath": "dist/app-shell",
+                        "index": "projects/app-shell/src/index.html",
+                        "main": "projects/app-shell/src/main.ts",
+                        "polyfills": "projects/app-shell/src/polyfills.ts",
+                        "tsConfig": "projects/app-shell/tsconfig.app.json",
                         "inlineStyleLanguage": "sass",
                         "assets": [
-                            "projects/shell/src/favicon.ico",
-                            "projects/shell/src/assets"
+                            "projects/app-shell/src/favicon.ico",
+                            "projects/app-shell/src/assets"
                         ],
                         "styles": [
-                            "projects/shell/src/styles.sass"
+                            "projects/app-shell/src/styles.sass"
                         ],
                         "scripts": [],
-                        "extraWebpackConfig": "projects/shell/webpack.config.js",
+                        "extraWebpackConfig": "projects/app-shell/webpack.config.js",
                         "commonChunk": false
                     },
                     "configurations": {
@@ -302,11 +302,11 @@
                                 }
                             ],
                             "fileReplacements": [{
-                                "replace": "projects/shell/src/environments/environment.ts",
-                                "with": "projects/shell/src/environments/environment.prod.ts"
+                                "replace": "projects/app-shell/src/environments/environment.ts",
+                                "with": "projects/app-shell/src/environments/environment.prod.ts"
                             }],
                             "outputHashing": "all",
-                            "extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+                            "extraWebpackConfig": "projects/app-shell/webpack.prod.config.js"
                         },
                         "development": {
                             "buildOptimizer": false,
@@ -323,11 +323,11 @@
                     "builder": "ngx-build-plus:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "shell:build:production",
-                            "extraWebpackConfig": "projects/shell/webpack.prod.config.js"
+                            "browserTarget": "app-shell:build:production",
+                            "extraWebpackConfig": "projects/app-shell/webpack.prod.config.js"
                         },
                         "development": {
-                            "browserTarget": "shell:build:development",
+                            "browserTarget": "app-shell:build:development",
                             "proxyConfig": "proxy.conf.json"
                         }
                     },
@@ -335,30 +335,30 @@
                     "options": {
                         "port": 8000,
                         "publicHost": "http://localhost:8000",
-                        "extraWebpackConfig": "projects/shell/webpack.config.js"
+                        "extraWebpackConfig": "projects/app-shell/webpack.config.js"
                     }
                 },
                 "extract-i18n": {
                     "builder": "ngx-build-plus:extract-i18n",
                     "options": {
-                        "browserTarget": "shell:build",
-                        "extraWebpackConfig": "projects/shell/webpack.config.js"
+                        "browserTarget": "app-shell:build",
+                        "extraWebpackConfig": "projects/app-shell/webpack.config.js"
                     }
                 },
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
-                        "main": "projects/shell/src/test.ts",
-                        "polyfills": "projects/shell/src/polyfills.ts",
-                        "tsConfig": "projects/shell/tsconfig.spec.json",
-                        "karmaConfig": "projects/shell/karma.conf.js",
+                        "main": "projects/app-shell/src/test.ts",
+                        "polyfills": "projects/app-shell/src/polyfills.ts",
+                        "tsConfig": "projects/app-shell/tsconfig.spec.json",
+                        "karmaConfig": "projects/app-shell/karma.conf.js",
                         "inlineStyleLanguage": "sass",
                         "assets": [
-                            "projects/shell/src/favicon.ico",
-                            "projects/shell/src/assets"
+                            "projects/app-shell/src/favicon.ico",
+                            "projects/app-shell/src/assets"
                         ],
                         "styles": [
-                            "projects/shell/src/styles.sass"
+                            "projects/app-shell/src/styles.sass"
                         ],
                         "scripts": []
                     }
@@ -366,5 +366,5 @@
             }
         }
     },
-    "defaultProject": "shell"
+    "defaultProject": "app-shell"
 }

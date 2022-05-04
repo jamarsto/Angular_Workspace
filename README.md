@@ -4,4 +4,4 @@
 
 Kiunzi is a microservices platform that provides the scaffolding needed by modern cloud native microservices based applications.
 
-This repository contains an example angular project workspace.  It demonstrates a shell and two micro-frontend applications as the user interface for a microservices based application.
+This repository contains an example angular project workspace.  It demonstrates a app-shell and two micro-frontend applications as the user interface for a microservices based application.
