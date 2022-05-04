@@ -7,12 +7,21 @@ import { RootComponent } from './root/root.component';
 import { shellComponent } from './shell/shell.component';
 
 const routes: Routes = [
-  { path: 'unauthorized', component: UnauthorisedComponent },
-  { matcher: modulePath('unauthorized'), component: UnauthorisedComponent },
+  //{ matcher: modulePath('unauthorized'), component: UnauthorisedComponent },
   { path: '', component: shellComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard] }, // standalone entry point
-  { matcher: modulePath(''), component: RootComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] } },
-  { matcher: modulePath('home'), component: HomeComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] } },
-  { matcher: modulePath('path'), component: PathComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] } },
+  { path: 'unauthorized', component: UnauthorisedComponent },
+  //{ matcher: modulePath(''), component: RootComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] } },
+  //{ matcher: modulePath('home'), component: HomeComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] },
+  { matcher: modulePath(''), component: RootComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] },
+      children: [
+        { path: '', component: HomeComponent },
+        { path: 'path', component: PathComponent },
+        { path: 'home', component: HomeComponent },
+        { path: 'unauthorized', component: UnauthorisedComponent },
+        { path: '**', component: NotFoundComponent }
+      ]
+  },
+  //{ matcher: modulePath('path'), component: PathComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard], data: { role: ['ADMIN','USER'] } },
   { path: '**', component: NotFoundComponent }
 ];
 
