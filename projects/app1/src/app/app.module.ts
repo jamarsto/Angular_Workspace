@@ -4,7 +4,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AuthConfigModule } from 'lib-micro-front-end';
 
 import { AppComponent } from './app.component';
-import { SampleRoutingModule } from './remote-app/remote-app-routing.module';
+import { RemoteAppRoutingModule } from './remote-app/remote-app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { SampleRoutingModule } from './remote-app/remote-app-routing.module';
   imports: [
     AuthConfigModule,
     BrowserModule,
-    SampleRoutingModule,
+    RemoteAppRoutingModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

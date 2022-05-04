@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
 import { RemoteAppComponent } from './remote-app.component';
 import { RootComponent } from './root/root.component';
-import { SampleRoutingModule } from './remote-app-routing.module';
+import { RemoteAppRoutingModule } from './remote-app-routing.module';
 import { ShellComponent } from './shell/shell.component';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { ShellComponent } from './shell/shell.component';
     BrowserModule,
     CommonModule,
     MicroFrontEndModule,
-    SampleRoutingModule,
+    RemoteAppRoutingModule,
   ]
 })
 export class RemoteAppModule implements DoBootstrap {
