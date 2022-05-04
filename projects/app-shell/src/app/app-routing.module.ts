@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'unauthorized', component: UnauthorisedComponent },
-  { matcher: modulePath('unauthorized'), component: UnauthorisedComponent },
+  //{ matcher: modulePath('unauthorized'), component: UnauthorisedComponent },
   { path: '', component: HomeComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard] },
   microFrontEnd('app-app1', [AutoLoginAllRoutesWithRoleGuard], ['ADMIN']),
   microFrontEnd('app-app2', [AutoLoginAllRoutesWithRoleGuard], 'ADMIN'),
