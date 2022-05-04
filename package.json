@@ -8,9 +8,11 @@
         "watch": "ng build --watch --configuration development",
         "test": "ng test",
         "start:app1": "ng serve app1 -o --port 8001",
+        "start:app2": "ng serve app2 -o --port 8002",
         "start:shell": "ng serve shell -o --port 8000 --proxy-config proxy.conf.json",
         "build:lib-micro-front-end": "ng build lib-micro-front-end",
         "build:app1": "ng build app1",
+        "build:app2": "ng build app2",
         "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
     },
     "private": true,

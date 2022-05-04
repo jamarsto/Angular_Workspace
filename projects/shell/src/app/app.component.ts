@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
@@ -8,12 +9,14 @@ import { OidcSecurityService} from 'angular-auth-oidc-client';
 })
 export class AppComponent {
   title = 'shell';
-  constructor(private oidcSecurityService: OidcSecurityService) {}
+  constructor(private oidcSecurityService: OidcSecurityService,private router: Router) {}
 
-  ngOnInit() {
-    // uncomment the following if using AutoLoginPartialRoutesWithRoleGuard
-
+  ngOnInit(): void {
 /*    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken}) => {
     });*/
+    //this.router.navigateByUrl(location.pathname.substr(1));
+    //window.addEventListener('popstate', () => {
+//      this.router.navigateByUrl(location.pathname.substr(1));
+//    });
   }
 }

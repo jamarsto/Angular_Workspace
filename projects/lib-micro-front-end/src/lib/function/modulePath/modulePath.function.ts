@@ -6,7 +6,11 @@ export function modulePath(modulePath: string): UrlMatcher {
 
     if(!fullUrl.includes('/')) {
       if(modulePath === '') {
+        //alert('modulePath: ' + modulePath + 'Match: ' + fullUrl);
         return ({ consumed: url });
+      }
+      if(modulePath !== 'unauthorized') {
+      //alert('modulePath: ' + modulePath + ' Nomatch: ' + fullUrl);
       }
       return null;
     }
@@ -14,10 +18,13 @@ export function modulePath(modulePath: string): UrlMatcher {
     const pattern: string = '^([-a-zA-Z0-9._~]+)/' + modulePath + '$';
     const regex: RegExp = new RegExp(pattern);
 
+    //alert('modulePath: Regex: ' + regex);
+
     if(regex.test(fullUrl)) {
+      //alert('modulePath: Match: ' + fullUrl);
       return ({ consumed: url });
     }
-
+    //alert('modulePath: Nomatch: ' + fullUrl);
     return null;
   }
 }

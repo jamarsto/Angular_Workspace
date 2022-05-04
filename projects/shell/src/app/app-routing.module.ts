@@ -16,8 +16,19 @@ const routes: Routes = [
     data: {
       type: 'module',
       remoteEntry: '/mfe/app1/remoteEntry.js',
-      exposedModule: './RemoteAppModule',
+      exposedModule: './App1Module',
       elementName: 'mfe-app1',
+      role: ['ADMIN'],
+    } as WebComponentWrapperOptions, canActivate: [AutoLoginAllRoutesWithRoleGuard]
+  },
+  {
+    matcher: shellPath('app2'),
+    component: WebComponentWrapper,
+    data: {
+      type: 'module',
+      remoteEntry: '/mfe/app2/remoteEntry.js',
+      exposedModule: './App2Module',
+      elementName: 'mfe-app2',
       role: ['ADMIN'],
     } as WebComponentWrapperOptions, canActivate: [AutoLoginAllRoutesWithRoleGuard]
   },

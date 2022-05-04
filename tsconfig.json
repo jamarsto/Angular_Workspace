@@ -10,7 +10,6 @@
     "noImplicitReturns": true,
     "paths": {
       "lib-micro-front-end": [
-        //"dist/lib1/lib1.d.ts",
         "dist/lib-micro-front-end/lib-micro-front-end",
         "dist/lib-micro-front-end"
       ]

@@ -1,22 +1,26 @@
-import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
+import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+
 import { MicroFrontEndModule } from 'lib-micro-front-end';
-import { AuthConfigModule } from '../auth/auth-config.module';
-import { RemoteAppComponent } from './remote-app.component';
-import { ShellComponent } from './shell/shell.component';
+
+import { AuthConfigModule } from '../auth-config/auth-config.module';
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
+import { RemoteAppComponent } from './remote-app.component';
+import { RootComponent } from './root/root.component';
 import { SampleRoutingModule } from './remote-app-routing.module';
+import { ShellComponent } from './shell/shell.component';
 
 @NgModule({
   declarations: [
-    RemoteAppComponent,
-    ShellComponent,
     HomeComponent,
     PathComponent,
+    RemoteAppComponent,
+    RootComponent,
+    ShellComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -26,8 +30,8 @@ import { SampleRoutingModule } from './remote-app-routing.module';
     AuthConfigModule,
     BrowserModule,
     CommonModule,
-    SampleRoutingModule,
     MicroFrontEndModule,
+    SampleRoutingModule,
   ]
 })
 export class RemoteAppModule implements DoBootstrap {

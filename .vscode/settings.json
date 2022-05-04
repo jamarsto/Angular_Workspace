@@ -4,6 +4,7 @@
 		"microfrontend",
 		"oidc",
 		"packagr",
+		"subdir",
 		"Unauthorised"
 	]
 }

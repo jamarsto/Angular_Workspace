@@ -7,6 +7,14 @@
         "secure": false,
         "changeOrigin": true
     },
+    "/mfe/app2": {
+        "target": "http://localhost:8002",
+        "pathRewrite": {
+            "^/mfe/app2/": "/"
+        },
+        "secure": false,
+        "changeOrigin": true
+    },
     "/api": {
         "target": "https://demo.jasonmarston.co.uk",
         "secure": false,
