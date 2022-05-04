@@ -8,5 +8,5 @@ export class ShellComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 }
