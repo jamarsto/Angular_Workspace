@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
+import { AuthConfigModule } from 'lib-micro-front-end';
+
 import { AppComponent } from './app.component';
-import { AuthConfigModule } from './auth-config/auth-config.module';
 import { SampleRoutingModule } from './remote-app/remote-app-routing.module';
 
 @NgModule({

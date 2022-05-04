@@ -191,8 +191,8 @@
                     },
                     "defaultConfiguration": "development",
                     "options": {
-                        "port": 8001,
-                        "publicHost": "http://localhost:8001",
+                        "port": 8002,
+                        "publicHost": "http://localhost:8002",
                         "extraWebpackConfig": "projects/app2/webpack.config.js"
                     }
                 },

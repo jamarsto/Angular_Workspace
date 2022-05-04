@@ -4,9 +4,8 @@ import { createCustomElement } from '@angular/elements';
 import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 
-import { MicroFrontEndModule } from 'lib-micro-front-end';
+import { AuthConfigModule, MicroFrontEndModule } from 'lib-micro-front-end';
 
-import { AuthConfigModule } from '../auth-config/auth-config.module';
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
 import { RemoteAppComponent } from './remote-app.component';
