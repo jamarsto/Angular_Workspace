@@ -5,7 +5,7 @@ export function modulePath(modulePath: string): UrlMatcher {
     if(url.length === 1 && modulePath === '') {
       return ({ consumed: url });
     }
-    if(url.length > 1 && url[1].path === modulePath) {
+    if(url.length === 2 && url[1].path === modulePath) {
       return ({ consumed: url });
     }
     return null;
