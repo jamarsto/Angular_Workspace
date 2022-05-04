@@ -6,9 +6,8 @@ import { AutoLoginAllRoutesWithRoleGuard, microFrontEnd, modulePath, NotFoundCom
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: 'unauthorized', component: UnauthorisedComponent },
-  //{ matcher: modulePath('unauthorized'), component: UnauthorisedComponent },
   { path: '', component: HomeComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard] },
+  { path: 'unauthorized', component: UnauthorisedComponent },
   microFrontEnd('app-app1', [AutoLoginAllRoutesWithRoleGuard], ['ADMIN']),
   microFrontEnd('app-app2', [AutoLoginAllRoutesWithRoleGuard], 'ADMIN'),
   { path: '**', component: NotFoundComponent }

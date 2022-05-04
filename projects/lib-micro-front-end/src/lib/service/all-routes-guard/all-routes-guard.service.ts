@@ -24,8 +24,8 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
   }
 
   canActivateChild(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      next: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this
         .autoLoginAllRoutesGuard
         .canActivateChild(next, state)
@@ -49,12 +49,23 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           if(isInRole === true) {
             return true;
           }
-          return this.router.parseUrl(this.pathPrefix('/unauthorized', next.url));
+          return this.router.parseUrl('/unauthorized');
         }));
   }
 
   private checkRoleForActivateChild(isAuthenticated: boolean | UrlTree, next: ActivatedRouteSnapshot): Observable<boolean | UrlTree> {
-    return this.checkRoleForActivate(isAuthenticated, next);
+    if(typeof isAuthenticated !== 'boolean' || isAuthenticated !== true) {
+      return of(isAuthenticated);
+    }
+    const data = next.parent != null ? next.parent.data : next.data;
+    return this
+        .isInRole(data['role'])
+        .pipe(map(isInRole => {
+          if(isInRole === true) {
+            return true;
+          }
+          return this.router.parseUrl('/unauthorized');
+        }));
   }
 
   private checkRoleForLoad(isAuthenticated: boolean | UrlTree, next: Route, url: UrlSegment[]): Observable<boolean | UrlTree> {
@@ -67,7 +78,7 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           if(isInRole === true) {
             return true;
           }
-          return this.router.parseUrl(this.pathPrefix('/unauthorized', url));
+          return this.router.parseUrl('/unauthorized');
         }));
   }
 
@@ -114,13 +125,5 @@ export class AutoLoginAllRoutesWithRoleGuard implements CanActivate, CanActivate
           }
           return false;
         }));
-  }
-
-  private pathPrefix(destination: string, url: UrlSegment[]): string {
-    const fullUrl = url.map(u => u.path).join('/');
-    if(!fullUrl.includes('/')) {
-      return destination;
-    }
-    return '/' + url[0] + destination;
   }
 }

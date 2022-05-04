@@ -10,7 +10,6 @@ export function microFrontEnd(name: string, guard?: any[], roles?: string[] | st
       || guard === null
       || guard.length === 0
       || (guard.length > 0 && typeof guard[0] === 'string')) {
-    console.warn('microFrontEnd: Role array provided without a guard.  Ignoring role array.');
     return {
       matcher: shellPath(name),
       component: WebComponentWrapper,
@@ -35,7 +34,7 @@ export function microFrontEnd(name: string, guard?: any[], roles?: string[] | st
         remoteEntry: '/mfe/' + name + '/remoteEntry.js',
         exposedModule: './RemoteAppModule',
         elementName: 'mfe-' + name,
-      } as WebComponentWrapperOptions, canActivate: guard
+      } as WebComponentWrapperOptions, canActivate: guard, canActivateChild: guard
     }
   }
   // provided guard(s) and role(s). Do full check
@@ -48,7 +47,7 @@ export function microFrontEnd(name: string, guard?: any[], roles?: string[] | st
       exposedModule: './RemoteAppModule',
       elementName: 'mfe-' + name,
       role: roles,
-    } as WebComponentWrapperOptions, canActivate: guard
+    } as WebComponentWrapperOptions, canActivate: guard, canActivateChild: guard
   }
 }
 

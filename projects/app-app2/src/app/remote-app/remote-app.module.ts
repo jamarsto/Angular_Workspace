@@ -12,11 +12,13 @@ import { RemoteAppComponent } from './remote-app.component';
 import { RootComponent } from './root/root.component';
 import { RemoteAppRoutingModule } from './remote-app-routing.module';
 import { shellComponent } from './shell/shell.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     PathComponent,
+    PaymentComponent,
     RemoteAppComponent,
     RootComponent,
     shellComponent,
