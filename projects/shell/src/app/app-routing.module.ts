@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
-import { AutoLoginAllRoutesWithRoleGuard, modulePath, shellPath, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
+
+import { AutoLoginAllRoutesWithRoleGuard, modulePath, NotFoundComponent, shellPath,  UnauthorisedComponent } from 'lib-micro-front-end';
+
 import { HomeComponent } from './home/home.component';
-//import { NotFoundComponent } from './not-found/not-found.component';
-//import { UnauthorisedComponent } from './unauthorised/unauthorised.component';
 
 const routes: Routes = [
   { path: 'unauthorized', component: UnauthorisedComponent },
@@ -16,7 +16,7 @@ const routes: Routes = [
     data: {
       type: 'module',
       remoteEntry: '/mfe/app1/remoteEntry.js',
-      exposedModule: './App1Module',
+      exposedModule: './RemoteAppModule',
       elementName: 'mfe-app1',
       role: ['ADMIN'],
     } as WebComponentWrapperOptions, canActivate: [AutoLoginAllRoutesWithRoleGuard]
@@ -27,7 +27,7 @@ const routes: Routes = [
     data: {
       type: 'module',
       remoteEntry: '/mfe/app2/remoteEntry.js',
-      exposedModule: './App2Module',
+      exposedModule: './RemoteAppModule',
       elementName: 'mfe-app2',
       role: ['ADMIN'],
     } as WebComponentWrapperOptions, canActivate: [AutoLoginAllRoutesWithRoleGuard]
