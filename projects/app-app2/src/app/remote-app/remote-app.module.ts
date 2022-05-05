@@ -6,10 +6,10 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { AuthConfigModule, MicroFrontEndModule } from 'lib-micro-front-end';
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
+import { PaymentComponent } from './payment/payment.component';
 import { RemoteAppComponent } from './remote-app.component';
 import { RemoteAppRoutingModule } from './remote-app-routing.module';
 import { ShellComponent } from './shell/shell.component';
-import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
