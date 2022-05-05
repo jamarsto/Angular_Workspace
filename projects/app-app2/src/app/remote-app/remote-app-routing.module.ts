@@ -5,10 +5,10 @@ import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RootComponent } from './root/root.component';
-import { shellComponent } from './shell/shell.component';
+import { ShellComponent } from './shell/shell.component';
 
 const routes: Routes = [
-  { path: '', component: shellComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard] }, // standalone entry point
+  { path: '', component: ShellComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard] }, // standalone entry point
   { path: 'unauthorized', component: UnauthorisedComponent }, // standalone authorization
   { matcher: modulePath(),
     component: RootComponent,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { app-shellComponent } from './app-shell.component';
+import { ShellComponent } from './shell.component';
 
-describe('app-shellComponent', () => {
-  let component: app-shellComponent;
-  let fixture: ComponentFixture<app-shellComponent>;
+describe('ShellComponent', () => {
+  let component: ShellComponent;
+  let fixture: ComponentFixture<ShellComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ app-shellComponent ]
+      declarations: [ ShellComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(app-shellComponent);
+    fixture = TestBed.createComponent(ShellComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

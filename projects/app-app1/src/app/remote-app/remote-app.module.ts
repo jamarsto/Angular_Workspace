@@ -12,7 +12,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { RemoteAppComponent } from './remote-app.component';
 import { RootComponent } from './root/root.component';
 import { RemoteAppRoutingModule } from './remote-app-routing.module';
-import { shellComponent } from './shell/shell.component';
+import { ShellComponent } from './shell/shell.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { shellComponent } from './shell/shell.component';
     PaymentComponent,
     RemoteAppComponent,
     RootComponent,
-    shellComponent,
+    ShellComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

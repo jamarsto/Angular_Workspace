@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.sass']
 })
-export class shellComponent implements OnInit {
+export class ShellComponent implements OnInit {
 
   constructor() {}
 
