@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
-import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
-import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { AuthConfigModule, MicroFrontEndModule } from 'lib-micro-front-end';
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
@@ -19,9 +18,6 @@ import { ShellComponent } from './shell/shell.component';
     RemoteAppComponent,
     ShellComponent,
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
   providers: [],
   imports: [
     AuthConfigModule,
@@ -32,11 +28,9 @@ import { ShellComponent } from './shell/shell.component';
   ]
 })
 export class RemoteAppModule implements DoBootstrap {
-  constructor(private injector: Injector, private oidcSecurityService: OidcSecurityService) {
+  constructor(private injector: Injector) {
     const element = createCustomElement(RemoteAppComponent, {injector: this.injector});
     customElements.define("mfe-app-app1", element);
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken}) => {
-    });
   }
   ngDoBootstrap() { }
 }
