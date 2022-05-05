@@ -1,9 +1,8 @@
 import { Route } from '@angular/router';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
-import { AutoLoginAllRoutesWithRoleGuard } from '../../service/all-routes-guard/all-routes-guard.service';
 import { shellPath } from '../shell-path/shell-path.function';
 
-export function microFrontEnd(name: string, guard?: any[], roles?: string[] | string) : Route {
+export function microFrontEnd(path: string, name: string, guard?: any[], roles?: string[] | string) : Route {
   // provided a role without a guard. Hence don't try to guard
   if(
       typeof guard === 'undefined'
@@ -11,7 +10,7 @@ export function microFrontEnd(name: string, guard?: any[], roles?: string[] | st
       || guard.length === 0
       || (guard.length > 0 && typeof guard[0] === 'string')) {
     return {
-      matcher: shellPath(name),
+      matcher: shellPath(path),
       component: WebComponentWrapper,
       data: {
         type: 'module',
@@ -27,19 +26,19 @@ export function microFrontEnd(name: string, guard?: any[], roles?: string[] | st
       || (typeof roles === 'string' && roles.trim() === '')
       || (Array.isArray(roles) && roles.length === 0)) {
     return {
-      matcher: shellPath(name),
+      matcher: shellPath(path),
       component: WebComponentWrapper,
       data: {
         type: 'module',
         remoteEntry: '/mfe/' + name + '/remoteEntry.js',
         exposedModule: './RemoteAppModule',
         elementName: 'mfe-' + name,
-      } as WebComponentWrapperOptions, canActivate: guard, canActivateChild: guard
+      } as WebComponentWrapperOptions, canLoad: guard, canActivate: guard, canActivateChild: guard
     }
   }
   // provided guard(s) and role(s). Do full check
   return {
-    matcher: shellPath(name),
+    matcher: shellPath(path),
     component: WebComponentWrapper,
     data: {
       type: 'module',
@@ -47,7 +46,7 @@ export function microFrontEnd(name: string, guard?: any[], roles?: string[] | st
       exposedModule: './RemoteAppModule',
       elementName: 'mfe-' + name,
       role: roles,
-    } as WebComponentWrapperOptions, canActivate: guard, canActivateChild: guard
+    } as WebComponentWrapperOptions, canLoad: guard, canActivate: guard, canActivateChild: guard
   }
 }
 
