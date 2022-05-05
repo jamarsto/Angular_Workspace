@@ -1,7 +1,8 @@
 import { Route } from '@angular/router';
+import { RootComponent } from '../../component/root/root.component';
 import { modulePath } from '../module-path/module-path.function';
 
-export type ModuleRoute = { component: any, guards?: any[], roles?: string[], children: Route[] }
+export type ModuleRoute = {guards?: any[], roles?: string[], children: Route[] }
 
 export function moduleRoute(moduleRoute: ModuleRoute) : Route {
   // provided a role without a guard. Hence don't try to guard
@@ -10,7 +11,7 @@ export function moduleRoute(moduleRoute: ModuleRoute) : Route {
       || moduleRoute.guards === null
       || moduleRoute.guards.length === 0) {
     return { matcher: modulePath(),
-      component: moduleRoute.component,
+      component: RootComponent,
       children: moduleRoute.children
     };
   }
@@ -19,7 +20,7 @@ export function moduleRoute(moduleRoute: ModuleRoute) : Route {
       || moduleRoute.roles === null
       || moduleRoute.roles.length === 0) {
     return { matcher: modulePath(),
-      component: moduleRoute.component,
+      component: RootComponent,
       canLoad: moduleRoute.guards,
       canActivate: moduleRoute.guards,
       canActivateChild: moduleRoute.guards,
@@ -28,7 +29,7 @@ export function moduleRoute(moduleRoute: ModuleRoute) : Route {
   }
   // provided guard(s) and role(s). Do full check
   return { matcher: modulePath(),
-    component: moduleRoute.component,
+    component: RootComponent,
     canLoad: moduleRoute.guards,
     canActivate: moduleRoute.guards,
     canActivateChild: moduleRoute.guards,

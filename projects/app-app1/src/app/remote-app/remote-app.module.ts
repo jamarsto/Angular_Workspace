@@ -8,7 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RemoteAppComponent } from './remote-app.component';
-import { RootComponent } from './root/root.component';
 import { RemoteAppRoutingModule } from './remote-app-routing.module';
 import { ShellComponent } from './shell/shell.component';
 
@@ -18,7 +17,6 @@ import { ShellComponent } from './shell/shell.component';
     PathComponent,
     PaymentComponent,
     RemoteAppComponent,
-    RootComponent,
     ShellComponent,
   ],
   schemas: [

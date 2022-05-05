@@ -3,6 +3,7 @@
  */
 
 export * from './lib/component/not-found/not-found.component';
+export * from './lib/component/root/root.component';
 export * from './lib/component/unauthorised/unauthorised.component';
 export * from './lib/function/micro-front-end-route/micro-front-end-route.function';
 export * from './lib/function/module-route/module-route.function';

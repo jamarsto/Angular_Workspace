@@ -16,9 +16,9 @@ export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
       component: WebComponentWrapper,
       data: {
         type: 'module',
-        remoteEntry: '/mfe/' + name + '/remoteEntry.js',
+        remoteEntry: '/mfe/' + mfe.name + '/remoteEntry.js',
         exposedModule: './RemoteAppModule',
-        elementName: 'mfe-' + name,
+        elementName: 'mfe-' + mfe.name,
       } as WebComponentWrapperOptions
     }
   }
@@ -31,9 +31,9 @@ export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
       component: WebComponentWrapper,
       data: {
         type: 'module',
-        remoteEntry: '/mfe/' + name + '/remoteEntry.js',
+        remoteEntry: '/mfe/' + mfe.name + '/remoteEntry.js',
         exposedModule: './RemoteAppModule',
-        elementName: 'mfe-' + name,
+        elementName: 'mfe-' + mfe.name,
       } as WebComponentWrapperOptions, canLoad: mfe.guards, canActivate: mfe.guards, canActivateChild: mfe.guards
     }
   }
@@ -43,9 +43,9 @@ export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
     component: WebComponentWrapper,
     data: {
       type: 'module',
-      remoteEntry: '/mfe/' + name + '/remoteEntry.js',
+      remoteEntry: '/mfe/' + mfe.name + '/remoteEntry.js',
       exposedModule: './RemoteAppModule',
-      elementName: 'mfe-' + name,
+      elementName: 'mfe-' + mfe.name,
       role: mfe.roles,
     } as WebComponentWrapperOptions, canLoad: mfe.guards, canActivate: mfe.guards, canActivateChild: mfe.guards
   }
