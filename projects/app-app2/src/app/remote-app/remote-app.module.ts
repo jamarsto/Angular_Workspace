@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { createCustomElement } from '@angular/elements';
 import { CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, Injector, NgModule } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
-
 import { AuthConfigModule, MicroFrontEndModule } from 'lib-micro-front-end';
-
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
 import { RemoteAppComponent } from './remote-app.component';

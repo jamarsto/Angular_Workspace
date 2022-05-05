@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { AutoLoginAllRoutesWithRoleGuard, microFrontEnd, modulePath, NotFoundComponent,  UnauthorisedComponent } from 'lib-micro-front-end';
-
+import { AutoLoginAllRoutesWithRoleGuard, microFrontEnd, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [

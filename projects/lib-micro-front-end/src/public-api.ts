@@ -4,8 +4,8 @@
 
 export * from './lib/component/not-found/not-found.component';
 export * from './lib/component/unauthorised/unauthorised.component';
-export * from './lib/function/modulePath/module-path.function';
-export * from './lib/function/shellPath/shell-path.function';
+export * from './lib/function/module-path/module-path.function';
+export * from './lib/function/shell-path/shell-path.function';
 export * from './lib/function/micro-front-end/micro-front-end.function';
 export * from './lib/module/auth-config/auth-config.module';
 export * from './lib/module/micro-front-end/micro-front-end.module';

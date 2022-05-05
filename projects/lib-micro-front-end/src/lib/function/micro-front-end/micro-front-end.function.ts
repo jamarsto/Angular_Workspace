@@ -1,7 +1,7 @@
 import { Route } from '@angular/router';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
 import { AutoLoginAllRoutesWithRoleGuard } from '../../service/all-routes-guard/all-routes-guard.service';
-import { shellPath } from '../shellPath/shell-path.function';
+import { shellPath } from '../shell-path/shell-path.function';
 
 export function microFrontEnd(name: string, guard?: any[], roles?: string[] | string) : Route {
   // provided a role without a guard. Hence don't try to guard
