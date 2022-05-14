@@ -13,7 +13,7 @@ export class AppComponent {
   constructor() {}
   ngOnInit(): void {}
 
-  selectedMfe(): string {
+  idOfCurrentMfe(): string {
     return window.location.pathname.split('/')[1];
   }
 }

@@ -1,22 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-info ms-0">
     <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['']" (click)="isNavbarCollapsed = true">Banking</a>
+        <a class="navbar-brand" [routerLink]="['./']" (click)="isNavbarCollapsed = true">Retail Home</a>
         <button (click)="isNavbarCollapsed = !isNavbarCollapsed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-expanded]="!isNavbarCollapsed"
             aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarSupportedContent">
-            <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="idOfCurrentMfe()">
-                <li ngbNavItem="retail">
-                    <a ngbNavLink [routerLink]="['retail']" (click)="isNavbarCollapsed = true">Retail</a>
+            <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="idOfCurrentRoute()">
+                <li ngbNavItem="path">
+                    <a ngbNavLink [routerLink]="['./path']" (click)="isNavbarCollapsed = true">Path</a>
                 </li>
-                <li ngbNavItem="business">
-                    <a ngbNavLink [routerLink]="['business']" (click)="isNavbarCollapsed = true">Business</a>
+                <li ngbNavItem="payment">
+                    <a ngbNavLink [routerLink]="['./payment']" (click)="isNavbarCollapsed = true">Payment</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<main class="container-fluid ms-0 ps-0 me-0 pe-0 mt-5 pt-2">
+<section class="container-fluid ms-0 ps-0 me-0 pe-0 mt-1">
     <router-outlet></router-outlet>
-</main>
+</section>
