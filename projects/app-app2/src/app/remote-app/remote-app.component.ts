@@ -10,9 +10,9 @@ export class RemoteAppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigateByUrl(location.pathname.substr(1));
+    this.router.navigateByUrl(location.pathname);
     window.addEventListener('popstate', () => {
-      this.router.navigateByUrl(location.pathname.substr(1));
+      this.router.navigateByUrl(location.pathname);
     });
   }
 }

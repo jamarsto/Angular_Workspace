@@ -1,12 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info ms-0">
-    <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['./']" (click)="isNavbarCollapsed = true">Business Home</a>
+<nav class="navbar py-0 navbar-expand-lg navbar-light bg-info ms-0">
+    <div class="container-fluid ps-1 mt-1 mb-1">
         <button (click)="isNavbarCollapsed = !isNavbarCollapsed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-expanded]="!isNavbarCollapsed"
             aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarSupportedContent">
             <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="idOfCurrentRoute()">
+                <li ngbNavItem="#">
+                    <a ngbNavLink [routerLink]="['./']" (click)="isNavbarCollapsed = true">Home</a>
+                </li>
                 <li ngbNavItem="path">
                     <a ngbNavLink [routerLink]="['./path']" (click)="isNavbarCollapsed = true">Path</a>
                 </li>

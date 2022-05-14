@@ -1,6 +1,6 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +10,20 @@ import { map, Observable } from 'rxjs';
 export class AppComponent {
   title = 'app-shell';
   isNavbarCollapsed = true;
-  constructor() {}
+  constructor(private router: Router, private location: Location) {}
   ngOnInit(): void {}
 
   idOfCurrentMfe(): string {
     return window.location.pathname.split('/')[1];
+  }
+
+  idOfCurrentRoute(): string {
+    var elements: string[] = window.location.pathname.split('/');
+    elements.shift(); elements.shift();
+    var id = elements.join('/');
+    if( id === '') {
+      return '#';
+    }
+    return id;
   }
 }
