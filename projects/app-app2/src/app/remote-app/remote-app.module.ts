@@ -8,7 +8,7 @@ import { PathComponent } from './path/path.component';
 import { PaymentComponent } from './payment/payment.component';
 import { RemoteAppComponent } from './remote-app.component';
 import { RemoteAppRoutingModule } from './remote-app-routing.module';
-import { ShellComponent } from './shell/shell.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,6 @@ import { ShellComponent } from './shell/shell.component';
     PathComponent,
     PaymentComponent,
     RemoteAppComponent,
-    ShellComponent,
   ],
   providers: [],
   imports: [
@@ -25,6 +24,7 @@ import { ShellComponent } from './shell/shell.component';
     CommonModule,
     MicroFrontEndModule,
     RemoteAppRoutingModule,
+    NgbModule
   ]
 })
 export class RemoteAppModule implements DoBootstrap {

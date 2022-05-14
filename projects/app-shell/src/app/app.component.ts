@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app-shell';
+  isNavbarCollapsed = true;
   constructor() {}
-
   ngOnInit(): void {}
+
+  selectedMfe(): string {
+    return window.location.pathname.split('/')[1];
+  }
 }

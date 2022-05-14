@@ -4,6 +4,9 @@ import { AuthConfigModule, MicroFrontEndModule } from 'lib-micro-front-end';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
     AuthConfigModule,
     BrowserModule,
     MicroFrontEndModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

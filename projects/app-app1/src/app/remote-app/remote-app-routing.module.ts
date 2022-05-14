@@ -4,10 +4,9 @@ import { AutoLoginAllRoutesWithRoleGuard, moduleRoute, NotFoundComponent, Unauth
 import { HomeComponent } from './home/home.component';
 import { PathComponent } from './path/path.component';
 import { PaymentComponent } from './payment/payment.component';
-import { ShellComponent } from './shell/shell.component';
 
 const routes: Routes = [
-  { path: '', component: ShellComponent, canActivate: [AutoLoginAllRoutesWithRoleGuard] },
+  { path: '', redirectTo: 'retail', pathMatch: 'full' },
   { path: 'unauthorized', component: UnauthorisedComponent },
   moduleRoute({ guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'], children: [
     { path: '', component: HomeComponent },
