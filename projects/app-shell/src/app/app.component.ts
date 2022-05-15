@@ -1,4 +1,3 @@
-import { connectRouter, shareNgZone } from '@angular-architects/module-federation-tools';
 import { Component, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -12,10 +11,7 @@ export class AppComponent {
   title = 'app-shell';
   isNavbarCollapsed = true;
 
-  constructor(private router: Router, private ngZone: NgZone) {
-    shareNgZone(this.ngZone);
-    connectRouter(this.router);
-  }
+  constructor(private router: Router, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     this.router
