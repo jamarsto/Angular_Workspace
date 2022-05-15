@@ -35,7 +35,7 @@ export class AppComponent {
     return { detail: this.modules.get(this.activeMfeId()) };
   }
 
-  private dispatchEvent() : void {
+  private dispatchEvent(): void {
     window.dispatchEvent(new CustomEvent('shellNavigationEvent', this.details()));
   }
 
