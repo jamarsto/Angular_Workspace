@@ -18,6 +18,8 @@ export class AppComponent {
         .events
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
         .subscribe(() => window.dispatchEvent(new CustomEvent('shellNavigationEvent')));
+    this.router.navigateByUrl(window.location.pathname);
+    window.addEventListener('popstate', () => this.router.navigateByUrl(window.location.pathname));
     window.addEventListener('mfeNavigationEvent', () => this.router.navigateByUrl(window.location.pathname));
   }
 
