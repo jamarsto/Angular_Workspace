@@ -14,9 +14,23 @@ export class RemoteAppComponent implements OnInit {
     this.router
         .events
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-        .subscribe(() => window.dispatchEvent(new CustomEvent('mfeNavigationEvent')));
+        .subscribe(() => window.dispatchEvent(new CustomEvent('mfeNavigationEvent', this.details())));
+    this.navigate();
+    window.addEventListener('popstate', () => this.navigate());
+    window.addEventListener('shellNavigationEvent', (e) => this.updateRoute(e as CustomEvent));
+  }
+
+  private details(): CustomEventInit {
+    return { detail: 'app-app2' };
+  }
+
+  private navigate(): void {
     this.router.navigateByUrl(window.location.pathname);
-    window.addEventListener('popstate', () => this.router.navigateByUrl(window.location.pathname));
-    window.addEventListener('shellNavigationEvent', () => this.router.navigateByUrl(window.location.pathname));
+  }
+
+  private updateRoute(event: CustomEvent): void {
+    if(event.detail === 'app-app12') {
+      this.navigate();
+    }
   }
 }
