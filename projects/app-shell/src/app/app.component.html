@@ -8,12 +8,22 @@
           <span class="navbar-toggler-icon"></span>
         </button>
                 <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarSupportedContent">
-                    <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="idOfCurrentMfe()">
-                        <li ngbNavItem="retail">
-                            <a ngbNavLink [routerLink]="['retail']" (click)="isNavbarCollapsed = true">Retail</a>
+                    <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li ngbDropdown class="nav-item">
+                            <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="{'active' : activeMfeId() === 'retail'}">Retail</a>
+                            <div ngbDropdownMenu class="bg-primary">
+                                <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['retail']" (click)="isNavbarCollapsed = true">Home</a>
+                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['retail/path']" (click)="isNavbarCollapsed = true">Path</a>
+                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['retail/payment']" (click)="isNavbarCollapsed = true">Payment</a>
+                            </div>
                         </li>
-                        <li ngbNavItem="business">
-                            <a ngbNavLink [routerLink]="['business']" (click)="isNavbarCollapsed = true">Business</a>
+                        <li ngbDropdown class="nav-item">
+                            <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="{'active' : activeMfeId() === 'business'}">Business</a>
+                            <div ngbDropdownMenu class="bg-primary">
+                                <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['business']" (click)="isNavbarCollapsed = true">Home</a>
+                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['business/path']" (click)="isNavbarCollapsed = true">Path</a>
+                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['business/payment']" (click)="isNavbarCollapsed = true">Payment</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

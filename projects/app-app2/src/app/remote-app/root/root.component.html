@@ -7,15 +7,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>
                 <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarSupportedContent">
-                    <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="idOfCurrentRoute()">
-                        <li ngbNavItem="#">
-                            <a ngbNavLink [routerLink]="['./']" (click)="isNavbarCollapsed = true">Home</a>
+                    <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li ngbNavItem>
+                            <a ngbNavLink routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['./']" (click)="isNavbarCollapsed = true">Home</a>
                         </li>
-                        <li ngbNavItem="path">
-                            <a ngbNavLink [routerLink]="['./path']" (click)="isNavbarCollapsed = true">Path</a>
+                        <li ngbNavItem>
+                            <a ngbNavLink routerLinkActive="active" [routerLink]="['./path']" (click)="isNavbarCollapsed = true">Path</a>
                         </li>
-                        <li ngbNavItem="payment">
-                            <a ngbNavLink [routerLink]="['./payment']" (click)="isNavbarCollapsed = true">Payment</a>
+                        <li ngbNavItem>
+                            <a ngbNavLink routerLinkActive="active" [routerLink]="['./payment']" (click)="isNavbarCollapsed = true">Payment</a>
                         </li>
                     </ul>
                 </div>

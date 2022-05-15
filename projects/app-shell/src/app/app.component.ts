@@ -1,6 +1,7 @@
-import { Location } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { connectRouter, shareNgZone } from '@angular-architects/module-federation-tools';
+import { Component, NgZone } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +11,21 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'app-shell';
   isNavbarCollapsed = true;
-  constructor(private router: Router, private location: Location) {}
-  ngOnInit(): void {}
 
-  idOfCurrentMfe(): string {
-    return window.location.pathname.split('/')[1];
+  constructor(private router: Router, private ngZone: NgZone) {
+    shareNgZone(this.ngZone);
+    connectRouter(this.router);
   }
 
-  idOfCurrentRoute(): string {
-    var elements: string[] = window.location.pathname.split('/');
-    elements.shift(); elements.shift();
-    var id = elements.join('/');
-    if( id === '') {
-      return '#';
-    }
-    return id;
+  ngOnInit(): void {
+    this.router
+        .events
+        .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+        .subscribe((evt) => window.dispatchEvent(new CustomEvent('shellNavigationEvent')));
+    window.addEventListener('mfeNavigationEvent', () => this.router.navigateByUrl(window.location.pathname));
+  }
+
+  activeMfeId(): string {
+    return window.location.pathname.split('/')[1];
   }
 }

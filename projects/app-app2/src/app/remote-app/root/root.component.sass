@@ -1,5 +1,9 @@
+@import "~bootstrap/scss/bootstrap"
+@import "~bootstrap/scss/variables"
+
 .min-vh-minus-header
-  min-height: calc(100vh - 56px) !important
+  min-height: calc(100vh - #{$nav-link-height} - #{$nav-link-padding-y * 2}) !important
 
 .vh-minus-header
-  height: calc(100vh - 56px) !important
+  height: calc(100vh - #{$nav-link-height} - #{$nav-link-padding-y * 2}) !important
+
