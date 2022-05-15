@@ -26,14 +26,18 @@ export class AppComponent {
     this.router
         .events
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-        .subscribe(() => window.dispatchEvent(new CustomEvent('shellNavigationEvent', this.details())));
+        .subscribe(() => this.dispatchEvent());
     this.navigate();
     window.addEventListener('popstate', () => this.navigate());
-    window.addEventListener('mfeNavigationEvent', (e) => this.updateRoute(e as CustomEvent));
+    window.addEventListener('mfeNavigationEvent', (event) => this.updateRoute(event as CustomEvent));
   }
 
   private details(): CustomEventInit {
     return { detail: this.modules.get(this.activeMfeId()) };
+  }
+
+  private dispatchEvent() : void {
+    window.dispatchEvent(new CustomEvent('shellNavigationEvent', this.details()));
   }
 
   private navigate(): void {
@@ -41,9 +45,7 @@ export class AppComponent {
   }
 
   private updateRoute(event: CustomEvent): void {
-    const path: string | undefined = this.paths.get(event.detail);
-    const segments: string[] = window.location.pathname.split('/');
-    if(segments.length > 1 && segments[1] === path) {
+    if(this.activeMfeId() === this.paths.get(event.detail)) {
       this.navigate();
     }
   }
