@@ -21,7 +21,7 @@ export class AppComponent {
     this.router
         .events
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-        .subscribe((evt) => window.dispatchEvent(new CustomEvent('shellNavigationEvent')));
+        .subscribe(() => window.dispatchEvent(new CustomEvent('shellNavigationEvent')));
     window.addEventListener('mfeNavigationEvent', () => this.router.navigateByUrl(window.location.pathname));
   }
 
