@@ -13,7 +13,6 @@ export class AppComponent {
   private modules: Map<string,string> = new Map<string,string>();
   private paths: Map<string,string> = new Map<string,string>();
 
-
   constructor(private router: Router, private ngZone: NgZone) {
     this.modules.set('retail', 'app-app1');
     this.modules.set('business', 'app-app2');
