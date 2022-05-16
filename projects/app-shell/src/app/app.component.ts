@@ -18,10 +18,6 @@ export class AppComponent implements OnInit {
     syncRouteShell(this.router, moduleByPath, pathByModule);
   }
 
-  activeModulePath(): string {
-    return activeModulePath();
-  }
-
   collapse() {
     this.isNavbarCollapsed = true;
   }
