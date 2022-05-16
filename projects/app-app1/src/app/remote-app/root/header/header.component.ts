@@ -6,13 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  isNavbarCollapsed = true;
+  isCollapsed = true;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   collapse(): void {
-    this.isNavbarCollapsed = true;
+    this.isCollapsed = true;
+  }
+
+  toggle(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

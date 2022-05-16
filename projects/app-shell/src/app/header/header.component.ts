@@ -7,14 +7,14 @@ import { activeModulePath } from 'lib-micro-front-end';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  isNavbarCollapsed = true;
+  isCollapsed = true;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   collapse(): void {
-    this.isNavbarCollapsed = true;
+    this.isCollapsed = true;
   }
 
   modulePathActiveClass(activeClass: string, path: string): string {
@@ -22,5 +22,9 @@ export class HeaderComponent implements OnInit {
       return activeClass;
     }
     return '';
+  }
+
+  toggle(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

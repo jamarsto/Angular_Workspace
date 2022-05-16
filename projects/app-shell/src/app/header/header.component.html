@@ -1,11 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" [routerLink]="['']" (click)="isNavbarCollapsed = true">Banking</a>
-        <button (click)="isNavbarCollapsed = !isNavbarCollapsed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-expanded]="!isNavbarCollapsed"
-            aria-label="Toggle navigation">
+        <a class="navbar-brand" [routerLink]="['']" (click)="isCollapsed = true">Banking</a>
+        <button (click)="toggle()" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="navbarSupportedContent">
             <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="'#'">
                 <li ngbDropdown class="nav-item">
                     <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="modulePathActiveClass('active','retail')">Retail</a>
