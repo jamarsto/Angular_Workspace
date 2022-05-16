@@ -5,10 +5,14 @@ import { AuthConfigModule } from 'lib-micro-front-end';
 
 import { AppComponent } from './app.component';
 import { RemoteAppRoutingModule } from './remote-app/remote-app-routing.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [],
   imports: [
