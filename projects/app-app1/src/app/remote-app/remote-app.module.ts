@@ -11,6 +11,7 @@ import { RemoteAppRoutingModule } from './remote-app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RootComponent } from './root/root.component';
+import { HeaderComponent } from './root/header/header.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { RootComponent } from './root/root.component';
     PaymentComponent,
     RemoteAppComponent,
     RootComponent,
+    HeaderComponent
   ],
   providers: [],
   imports: [

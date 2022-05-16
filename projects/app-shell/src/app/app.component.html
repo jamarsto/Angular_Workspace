@@ -1,38 +1,11 @@
 <article class="d-flex flex-column overflow-hidden min-vh-100 vh-100">
     <header class="container-fluid navbar-fixed-top ps-0 pe-0">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand" [routerLink]="['']" (click)="isNavbarCollapsed = true">Banking</a>
-                <button (click)="isNavbarCollapsed = !isNavbarCollapsed" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-expanded]="!isNavbarCollapsed"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed" id="navbarSupportedContent">
-                    <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="'#'">
-                        <li ngbDropdown class="nav-item">
-                            <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="modulePathActiveClass('active','retail')">Retail</a>
-                            <div ngbDropdownMenu class="bg-primary">
-                                <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['retail']" (click)="collapse()">Home</a>
-                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['retail/path']" (click)="collapse()">Path</a>
-                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['retail/payment']" (click)="collapse()">Payment</a>
-                            </div>
-                        </li>
-                        <li ngbDropdown class="nav-item">
-                            <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="modulePathActiveClass('active','business')">Business</a>
-                            <div ngbDropdownMenu class="bg-primary">
-                                <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['business']" (click)="collapse()">Home</a>
-                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['business/path']" (click)="collapse()">Path</a>
-                                <a ngbDropdownItem routerLinkActive="active" [routerLink]="['business/payment']" (click)="collapse()">Payment</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <header-component></header-component>
     </header>
     <main role="main" class="container-fluid flex-grow-1 overflow-auto bg-light ps-0 pe-0">
         <router-outlet></router-outlet>
     </main>
     <footer class="container-fluid bg-mid-gray  ps-0 pe-0">
+        <footer-component></footer-component>
     </footer>
 </article>

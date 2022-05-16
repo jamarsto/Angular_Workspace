@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { activeModulePath, syncRouteShell } from 'lib-micro-front-end';
+import { syncRouteShell } from 'lib-micro-front-end';
 import { moduleByPath, pathByModule } from './app-routing.module';
 
 @Component({
@@ -10,22 +10,10 @@ import { moduleByPath, pathByModule } from './app-routing.module';
 })
 export class AppComponent implements OnInit {
   title = 'app-shell';
-  isNavbarCollapsed = true;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     syncRouteShell(this.router, moduleByPath, pathByModule);
-  }
-
-  collapse(): void {
-    this.isNavbarCollapsed = true;
-  }
-
-  modulePathActiveClass(activeClass: string, path: string): string {
-    if(activeModulePath() === path) {
-      return activeClass;
-    }
-    return '';
   }
 }
