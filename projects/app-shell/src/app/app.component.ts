@@ -1,6 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { activeModulePath, syncRouteShell } from 'lib-micro-front-end';
+import { moduleByPath, pathByModule } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +11,11 @@ import { activeModulePath, syncRouteShell } from 'lib-micro-front-end';
 export class AppComponent {
   title = 'app-shell';
   isNavbarCollapsed = true;
-  private moduleByPath: Map<string,string> = new Map<string,string>();
-  private pathByModule: Map<string,string> = new Map<string,string>();
 
-  constructor(private router: Router, private ngZone: NgZone) {
-    this.moduleByPath.set('retail', 'app-app1');
-    this.moduleByPath.set('business', 'app-app2');
-
-    this.pathByModule.set('app-app1', 'retail');
-    this.pathByModule.set('app-app2', 'business');
-  }
+  constructor(private router: Router, private ngZone: NgZone) {}
 
   ngOnInit(): void {
-    syncRouteShell(this.router, this.moduleByPath, this.pathByModule);
+    syncRouteShell(this.router, moduleByPath, pathByModule);
   }
 
   activeModulePath(): string {
