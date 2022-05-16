@@ -7,7 +7,6 @@ import { syncRouteModule } from 'lib-micro-front-end';
   styleUrls: ['./remote-app.component.sass']
 })
 export class RemoteAppComponent implements OnInit {
-
   constructor(private router: Router) {}
 
   ngOnInit(): void {
