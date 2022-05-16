@@ -1,9 +1,11 @@
 @import "~bootstrap/scss/bootstrap"
 @import "~bootstrap/scss/variables"
 
+
+$navbar-height: $nav-link-height * 1 + $nav-link-padding-y * 2
+$footer-height: $nav-link-padding-y * 3
+
 .min-vh-minus-header
-  min-height: calc(100vh - #{$nav-link-height} - #{$nav-link-padding-y * 2}) !important
-
+  min-height: calc(100vh - #{$navbar-height} - #{$footer-height}) !important
 .vh-minus-header
-  height: calc(100vh - #{$nav-link-height} - #{$nav-link-padding-y * 2}) !important
-
+  height: calc(100vh - #{$navbar-height} - #{$footer-height}) !important
