@@ -22,6 +22,10 @@ export class AppComponent implements OnInit {
     return activeModulePath();
   }
 
+  collapse() {
+    this.isNavbarCollapsed = true;
+  }
+
   modulePathActiveClass(activeClass: string, path: string): string {
     if(activeModulePath() === path) {
       return activeClass;

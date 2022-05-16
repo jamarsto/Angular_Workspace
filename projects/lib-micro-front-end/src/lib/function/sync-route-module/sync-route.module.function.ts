@@ -2,13 +2,14 @@ import { NavigationEnd, Router } from "@angular/router";
 import { filter } from "rxjs";
 
 export function syncRouteModule(router: Router, module: string): void {
+  console.warn('Initializing Module(' + module + ')')
   router
       .events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe(() => dispatchEvent(module));
-  navigate(router);
   window.addEventListener('popstate', () => navigate(router));
   window.addEventListener('shellNavigationEvent', (event) => updateRoute(router, event as CustomEvent, module));
+  navigate(router);
 }
 
 function details(module: string): CustomEventInit {

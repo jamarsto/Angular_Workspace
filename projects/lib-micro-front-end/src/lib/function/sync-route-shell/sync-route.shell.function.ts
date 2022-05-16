@@ -7,9 +7,9 @@ export function syncRouteShell(router: Router, moduleByPath: Map<string, string>
       .events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe(() => dispatchEvent(moduleByPath));
-  navigate(router);
   window.addEventListener('popstate', () => navigate(router));
   window.addEventListener('mfeNavigationEvent', (event) => updateRoute(router, event as CustomEvent, pathByModule));
+  navigate(router);
 }
 
 function details(moduleByPath: Map<string,string>): CustomEventInit {

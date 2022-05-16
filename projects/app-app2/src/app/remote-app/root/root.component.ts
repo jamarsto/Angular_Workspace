@@ -10,4 +10,8 @@ export class RootComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  collapse() {
+    this.isNavbarCollapsed = true;
+  }
 }
