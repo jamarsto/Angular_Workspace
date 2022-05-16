@@ -5,13 +5,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./root.component.sass']
 })
 export class RootComponent implements OnInit {
-  isNavbarCollapsed = true;
-
   constructor() {}
-
   ngOnInit(): void {}
-
-  collapse(): void {
-    this.isNavbarCollapsed = true;
-  }
 }
