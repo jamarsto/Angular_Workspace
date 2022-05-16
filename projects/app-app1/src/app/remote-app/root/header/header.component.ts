@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { activeModulePath } from 'lib-micro-front-end';
 
 @Component({
   selector: 'header-component',
