@@ -2,7 +2,6 @@ import { NavigationEnd, Router } from "@angular/router";
 import { filter } from "rxjs";
 
 export function syncRouteModule(router: Router, module: string): void {
-  console.warn('Initializing Module(' + module + ')')
   router
       .events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
