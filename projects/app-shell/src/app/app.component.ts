@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Router } from '@angular/router';
+import { activeModulePath, syncRouteShell } from 'lib-micro-front-end';
 
 @Component({
   selector: 'app-root',
@@ -10,50 +10,29 @@ import { filter } from 'rxjs';
 export class AppComponent {
   title = 'app-shell';
   isNavbarCollapsed = true;
-  private modules: Map<string,string> = new Map<string,string>();
-  private paths: Map<string,string> = new Map<string,string>();
+  private moduleByPath: Map<string,string> = new Map<string,string>();
+  private pathByModule: Map<string,string> = new Map<string,string>();
 
   constructor(private router: Router, private ngZone: NgZone) {
-    this.modules.set('retail', 'app-app1');
-    this.modules.set('business', 'app-app2');
+    this.moduleByPath.set('retail', 'app-app1');
+    this.moduleByPath.set('business', 'app-app2');
 
-    this.paths.set('app-app1', 'retail');
-    this.paths.set('app-app2', 'business');
+    this.pathByModule.set('app-app1', 'retail');
+    this.pathByModule.set('app-app2', 'business');
   }
 
   ngOnInit(): void {
-    this.router
-        .events
-        .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-        .subscribe(() => this.dispatchEvent());
-    this.navigate();
-    window.addEventListener('popstate', () => this.navigate());
-    window.addEventListener('mfeNavigationEvent', (event) => this.updateRoute(event as CustomEvent));
+    syncRouteShell(this.router, this.moduleByPath, this.pathByModule);
   }
 
-  private details(): CustomEventInit {
-    return { detail: this.modules.get(this.activeMfeId()) };
+  activeModulePath(): string {
+    return activeModulePath();
   }
 
-  private dispatchEvent(): void {
-    window.dispatchEvent(new CustomEvent('shellNavigationEvent', this.details()));
-  }
-
-  private navigate(): void {
-    this.router.navigateByUrl(window.location.pathname);
-  }
-
-  private updateRoute(event: CustomEvent): void {
-    if(this.activeMfeId() === this.paths.get(event.detail)) {
-      this.navigate();
+  moduleActiveClass(activeClass: string, path: string): string {
+    if(activeModulePath() === path) {
+      return activeClass;
     }
-  }
-
-  activeMfeId(): string {
-    var segments: string[] = window.location.pathname.split('/');
-    if(segments.length > 1) {
-      return segments[1];
-    }
-    return '#';
+    return '';
   }
 }
