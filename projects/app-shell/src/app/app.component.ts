@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { activeModulePath, syncRouteShell } from 'lib-micro-front-end';
 import { moduleByPath, pathByModule } from './app-routing.module';
@@ -8,11 +8,11 @@ import { moduleByPath, pathByModule } from './app-routing.module';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app-shell';
   isNavbarCollapsed = true;
 
-  constructor(private router: Router, private ngZone: NgZone) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     syncRouteShell(this.router, moduleByPath, pathByModule);
@@ -22,7 +22,7 @@ export class AppComponent {
     return activeModulePath();
   }
 
-  moduleActiveClass(activeClass: string, path: string): string {
+  modulePathActiveClass(activeClass: string, path: string): string {
     if(activeModulePath() === path) {
       return activeClass;
     }
