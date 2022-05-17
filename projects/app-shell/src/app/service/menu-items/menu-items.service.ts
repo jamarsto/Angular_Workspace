@@ -11,6 +11,6 @@ export class MenuItemsService implements OnInit {
   ngOnInit(): void {}
 
   getMenuItemsForModule(module: string): Observable<any> {
-    return this.httpClient.get('./mfe/' + module + '/assets/menu.json');
+    return this.httpClient.get('/mfe/' + module + '/assets/menu.json');
   }
 }
