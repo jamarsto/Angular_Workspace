@@ -6,22 +6,18 @@
         </button>
         <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed" id="navbarSupportedContent">
             <ul ngbNav #nav="ngbNav" class="navbar-nav me-auto mb-2 mb-lg-0" [activeId]="'#'">
-                <li ngbDropdown class="nav-item">
-                    <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="modulePathActiveClass('active','retail')">Retail</a>
-                    <div ngbDropdownMenu class="bg-primary">
-                        <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['retail']" (click)="collapse()">Home</a>
-                        <a ngbDropdownItem routerLinkActive="active" [routerLink]="['retail/path']" (click)="collapse()">Path</a>
-                        <a ngbDropdownItem routerLinkActive="active" [routerLink]="['retail/payment']" (click)="collapse()">Payment</a>
-                    </div>
-                </li>
-                <li ngbDropdown class="nav-item">
-                    <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="modulePathActiveClass('active','business')">Business</a>
-                    <div ngbDropdownMenu class="bg-primary">
-                        <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['business']" (click)="collapse()">Home</a>
-                        <a ngbDropdownItem routerLinkActive="active" [routerLink]="['business/path']" (click)="collapse()">Path</a>
-                        <a ngbDropdownItem routerLinkActive="active" [routerLink]="['business/payment']" (click)="collapse()">Payment</a>
-                    </div>
-                </li>
+                <ng-container *ngFor="let top of navBar">
+                    <ng-container *ngIf="top.items.length > 0">
+                        <li ngbDropdown class="nav-item">
+                            <a href (click)="false" class="nav-link" ngbDropdownToggle [ngClass]="modulePathActiveClass('active',top.prefix)">{{top.title}}</a>
+                            <div ngbDropdownMenu class="bg-primary">
+                                <ng-container *ngFor="let item of top.items">
+                                    <a ngbDropdownItem routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.fullMatch}" [routerLink]="[top.prefix + item.link]" (click)="collapse()">{{item.title}}</a>
+                                </ng-container>
+                            </div>
+                        </li>
+                    </ng-container>
+                </ng-container>
             </ul>
         </div>
     </div>

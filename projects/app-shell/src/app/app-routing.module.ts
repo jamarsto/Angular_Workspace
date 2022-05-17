@@ -12,6 +12,14 @@ export const pathByModule: Map<string,string> = new Map<string,string>([
   ['app-app2', 'business']
 ]);
 
+export type Menu = { title: string, name: string, prefix: string, items: MenuItem[] }
+export type MenuItem = { title: string, link: string, fullMatch: boolean }
+
+export const navBar: Menu[] = [
+  {title: 'Retail', name: 'app-app1', prefix: 'retail', items: []},
+  {title: 'Business', name: 'app-app2', prefix: 'business', items: []},
+];
+
 const routes: Routes = [
   { path: '', redirectTo: 'retail', pathMatch: 'full' },
   { path: 'unauthorized', component: UnauthorisedComponent },
@@ -21,7 +29,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
