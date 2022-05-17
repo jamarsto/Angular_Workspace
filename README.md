@@ -9,6 +9,8 @@ This repository contains an example angular project workspace.  It demonstrates 
 The framework here demonstrates the following features:
 - [Webpack module federation](https://webpack.js.org/concepts/module-federation/)
 - Module isolation using a [custom element](https://angular.io/guide/elements)
-- Route synchronisation between the Shell and Modules
-- Dynamic navbar generation in Shell from Modules
-- Cross Shell and Module Authentication & Authorisation using OIDC Code Flow with PKCE
+- [Routes](https://angular.io/guide/router) synchronisation between the Shell and Modules
+- Dynamic [Navbar](https://getbootstrap.com/docs/5.0/components/navbar/) generation in Shell from Modules
+- Cross Shell and Module [Authentication](https://www.npmjs.com/package/angular-auth-oidc-client) & Authorisation using OIDC Code Flow with [PKCE](https://oauth.net/2/pkce/)
+
+*Note: The modules work best when deployed in [Kubernetes](https://kubernetes.io/) using [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) to map routes to their [Services](https://kubernetes.io/docs/concepts/services-networking/service/).  To the Shell the Modules then look like they are deployed in sub directories rather than separate hosts.  We have prefixed the routes so a module called **app-app1** for instance is exposed on /mfe/**app-app1**/remoteEntry.js instead of https://**&lt;app-app1-host&gt;**:**&lt;port&gt;**/remoteEntry.js*
