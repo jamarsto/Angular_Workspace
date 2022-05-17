@@ -13,8 +13,8 @@ const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'path', component: PathComponent },
     { path: 'payment', component: PaymentComponent },
+    { path: '**', component: NotFoundComponent }
   ]}),
-  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
