@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { activeModulePath } from 'lib-micro-front-end';
-import { Modules } from 'lib-micro-front-end';
-import { shellModules } from '../../remote-app/remote-app-routing.module';
+import { activeModulePath, Module } from 'lib-micro-front-end';
+import { shellModule } from '../../remote-app/remote-app-routing.module';
 
 @Component({
   selector: 'header-component',
@@ -10,7 +9,7 @@ import { shellModules } from '../../remote-app/remote-app-routing.module';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  modules: Modules = shellModules;
+  module: Module = shellModule;
 
   constructor() {}
 
