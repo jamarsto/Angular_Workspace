@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutoLoginAllRoutesWithRoleGuard, microFrontEndRoute, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
+import { MenuItem } from './service/menu-items/menu-items.service';
 
 export const moduleByPath: Map<string,string> = new Map<string,string>([
   ['retail', 'app-app1'],
@@ -13,7 +14,6 @@ export const pathByModule: Map<string,string> = new Map<string,string>([
 ]);
 
 export type Menu = { title: string, name: string, prefix: string, items: MenuItem[] }
-export type MenuItem = { title: string, link: string, fullMatch: boolean }
 
 export const navBar: Menu[] = [
   {title: 'Retail', name: 'app-app1', prefix: 'retail', items: []},
