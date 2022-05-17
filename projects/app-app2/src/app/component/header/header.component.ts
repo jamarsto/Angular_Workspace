@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { activeModulePath } from 'lib-micro-front-end';
+import { activeModulePath, MenuItems, Modules } from 'lib-micro-front-end';
+import {default as jsonMenuItems} from '../../../../src/assets/menu.json';
 
 @Component({
   selector: 'header-component',
@@ -7,7 +8,8 @@ import { activeModulePath } from 'lib-micro-front-end';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-  isCollapsed = true;
+  isCollapsed: boolean = true;
+  modules: Modules = [{name: 'app-app2', title: 'Business', prefix: 'business', items: jsonMenuItems as MenuItems }];
 
   constructor() {}
 

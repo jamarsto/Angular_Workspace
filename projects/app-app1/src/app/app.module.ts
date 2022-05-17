@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AuthConfigModule } from 'lib-micro-front-end';
 
@@ -19,6 +20,7 @@ import { FooterComponent } from './component/footer/footer.component';
     AuthConfigModule,
     BrowserModule,
     RemoteAppRoutingModule,
+    NgbModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

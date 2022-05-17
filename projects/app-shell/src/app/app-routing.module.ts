@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoLoginAllRoutesWithRoleGuard, microFrontEndRoute, Module, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
+import { AutoLoginAllRoutesWithRoleGuard, microFrontEndRoute, Modules, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
 
-export const modules: Module[] = [
+export const modules: Modules = [
   {title: 'Retail', name: 'app-app1', prefix: 'retail', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] },
   {title: 'Business', name: 'app-app2', prefix: 'business', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN','USER'] },
 ];

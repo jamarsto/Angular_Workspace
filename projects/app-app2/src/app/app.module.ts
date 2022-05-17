@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RemoteAppRoutingModule } from './remote-app/remote-app-routing.module';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FooterComponent } from './component/footer/footer.component';
     AuthConfigModule,
     BrowserModule,
     RemoteAppRoutingModule,
+    NgbModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

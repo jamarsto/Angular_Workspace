@@ -1,3 +1,5 @@
-import { MenuItem } from "../menu-item/menu-item.type";
+import { Guards } from "../guards/guards.type";
+import { MenuItems } from "../menu-items/menu-items.type";
+import { Roles } from "../roles/roles.type";
 
-export type Module = { title: string, name: string, prefix: string, items: MenuItem[], guards?: any[], roles?: string[] }
+export type Module = { title: string, name: string, prefix: string, items: MenuItems, guards?: Guards, roles?: Roles }

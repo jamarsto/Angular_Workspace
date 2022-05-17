@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { activeModulePath } from 'lib-micro-front-end';
+import { activeModulePath, Modules } from 'lib-micro-front-end';
 import { MenuItemsService } from '../../service/menu-items/menu-items.service';
 import { modules } from '../../app-routing.module';
 
@@ -10,7 +10,7 @@ import { modules } from '../../app-routing.module';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  modules = modules;
+  modules: Modules = modules;
 
   constructor(private menuItemService: MenuItemsService) {}
 
