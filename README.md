@@ -8,7 +8,12 @@ This repository contains an example angular project workspace.  It demonstrates 
 
 The framework here demonstrates the following features:
 - [Webpack module federation](https://webpack.js.org/concepts/module-federation/)
-- Module isolation using a [custom element](https://angular.io/guide/elements)
+- Module isolation using a [custom element](https://angular.io/guide/elements) allowing multiple frameworks for Modules such as:
+  - Angular
+  - React
+  - Vue
+  - AngularJS
+  - Svelte
 - [Router](https://angular.io/guide/router) synchronisation between the Shell and Modules
 - Dynamic [Navbar](https://getbootstrap.com/docs/5.0/components/navbar/) generation in Shell from Modules
 - Cross Shell and Module [Authentication](https://www.npmjs.com/package/angular-auth-oidc-client) & Authorisation using OIDC Code Flow with [PKCE](https://oauth.net/2/pkce/)
