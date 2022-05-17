@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { activeModulePath } from 'lib-micro-front-end';
-import { MenuItemsService } from '../service/menu-items/menu-items.service';
-import { navBar } from '../app-routing.module';
+import { MenuItemsService } from '../../service/menu-items/menu-items.service';
+import { navBar } from '../../app-routing.module';
 
 @Component({
   selector: 'header-component',

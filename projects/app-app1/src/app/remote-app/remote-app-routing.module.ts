@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutoLoginAllRoutesWithRoleGuard, moduleRoute, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
-import { HomeComponent } from './home/home.component';
-import { PathComponent } from './path/path.component';
-import { PaymentComponent } from './payment/payment.component';
-import { RootComponent } from './root/root.component';
+import { HomeComponent } from './component/home/home.component';
+import { PathComponent } from './component/path/path.component';
+import { PaymentComponent } from './component/payment/payment.component';
+import { RootComponent } from './component/root/root.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'retail', pathMatch: 'full' },
