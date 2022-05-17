@@ -4,49 +4,49 @@ import { shellPath } from '../shell-path/shell-path.function';
 import { Module } from '../../types/module/module.type';
 
 
-export function microFrontEndRoute(mfe: Module) : Route {
+export function microFrontEndRoute(module: Module) : Route {
   // provided a role without a guard. Hence don't try to guard
   if(
-      typeof mfe.guards === 'undefined'
-      || mfe.guards === null
-      || mfe.guards.length === 0
-      || (mfe.guards.length > 0 && typeof mfe.guards[0] === 'string')) {
+      typeof module.guards === 'undefined'
+      || module.guards === null
+      || module.guards.length === 0
+      || (module.guards.length > 0 && typeof module.guards[0] === 'string')) {
     return {
-      matcher: shellPath(mfe.prefix),
+      matcher: shellPath(module.prefix),
       component: WebComponentWrapper,
       data: {
         type: 'module',
-        remoteEntry: '/mfe/' + mfe.name + '/remoteEntry.js',
+        remoteEntry: '/mfe/' + module.name + '/remoteEntry.js',
         exposedModule: './RemoteAppModule',
-        elementName: 'mfe-' + mfe.name,
+        elementName: 'mfe-' + module.name,
       } as WebComponentWrapperOptions
     }
   }
   // provided guard(s) without role(s).  Just do authorized check
-  if(typeof mfe.roles === 'undefined'
-      || mfe.roles === null
-      || mfe.roles.length === 0) {
+  if(typeof module.roles === 'undefined'
+      || module.roles === null
+      || module.roles.length === 0) {
     return {
-      matcher: shellPath(mfe.prefix),
+      matcher: shellPath(module.prefix),
       component: WebComponentWrapper,
       data: {
         type: 'module',
-        remoteEntry: '/mfe/' + mfe.name + '/remoteEntry.js',
+        remoteEntry: '/mfe/' + module.name + '/remoteEntry.js',
         exposedModule: './RemoteAppModule',
-        elementName: 'mfe-' + mfe.name,
-      } as WebComponentWrapperOptions, canLoad: mfe.guards, canActivate: mfe.guards, canActivateChild: mfe.guards
+        elementName: 'mfe-' + module.name,
+      } as WebComponentWrapperOptions, canLoad: module.guards, canActivate: module.guards, canActivateChild: module.guards
     }
   }
   // provided guard(s) and role(s). Do full check
   return {
-    matcher: shellPath(mfe.prefix),
+    matcher: shellPath(module.prefix),
     component: WebComponentWrapper,
     data: {
       type: 'module',
-      remoteEntry: '/mfe/' + mfe.name + '/remoteEntry.js',
+      remoteEntry: '/mfe/' + module.name + '/remoteEntry.js',
       exposedModule: './RemoteAppModule',
-      elementName: 'mfe-' + mfe.name,
-      role: mfe.roles,
-    } as WebComponentWrapperOptions, canLoad: mfe.guards, canActivate: mfe.guards, canActivateChild: mfe.guards
+      elementName: 'mfe-' + module.name,
+      role: module.roles,
+    } as WebComponentWrapperOptions, canLoad: module.guards, canActivate: module.guards, canActivateChild: module.guards
   }
 }

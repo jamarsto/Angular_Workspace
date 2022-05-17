@@ -1,8 +1,10 @@
-import { Route } from '@angular/router';
+import { Route, Routes } from '@angular/router';
 import { modulePath } from '../module-path/module-path.function';
 import { RootComponent } from '../../component/root/root.component';
+import { Guards } from '../../types/guards/guards.type';
+import { Roles } from '../../types/roles/roles.type';
 
-export type ModuleRoute = { component?: any, guards?: any[], roles?: string[], children: Route[] }
+export type ModuleRoute = { component?: any, guards?: Guards, roles?: Roles, children: Routes }
 
 export function moduleRoute(moduleRoute: ModuleRoute) : Route {
   const moduleRouteComponent: any =

@@ -7,7 +7,7 @@ import { HomeComponent } from './component/home/home.component';
 import { PathComponent } from './component/path/path.component';
 import { PaymentComponent } from './component/payment/payment.component';
 import { RemoteAppComponent } from './remote-app.component';
-import { RemoteAppRoutingModule } from './remote-app-routing.module';
+import { RemoteAppRoutingModule, shellModule } from './remote-app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RootComponent } from './component/root/root.component';
@@ -36,7 +36,7 @@ import { HeaderComponent } from './component/root/component/header/header.compon
 export class RemoteAppModule implements DoBootstrap {
   constructor(private injector: Injector) {
     const element = createCustomElement(RemoteAppComponent, {injector: this.injector});
-    customElements.define("mfe-app-app1", element);
+    customElements.define('mfe-' + shellModule.name, element);
   }
   ngDoBootstrap() { }
 }
