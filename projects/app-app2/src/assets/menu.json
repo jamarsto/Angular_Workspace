@@ -1,5 +1,5 @@
 [
-    { "title": "Home", "link": "/", "fullMatch": true },
+    { "title": "Home", "link": "/", "fullMatch": false },
     { "title": "Path", "link": "/path", "fullMatch": false },
     { "title": "Payment", "link": "/payment", "fullMatch": false }
 ]
