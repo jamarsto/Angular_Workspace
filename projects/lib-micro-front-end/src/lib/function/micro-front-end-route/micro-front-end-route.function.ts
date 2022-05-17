@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
 import { shellPath } from '../shell-path/shell-path.function';
+import { Module } from '../../types/module/module.type';
 
-export type MicroFrontEndRoute = { path: string, name: string, guards?: any[], roles?: string[] }
 
-export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
+export function microFrontEndRoute(mfe: Module) : Route {
   // provided a role without a guard. Hence don't try to guard
   if(
       typeof mfe.guards === 'undefined'
@@ -12,7 +12,7 @@ export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
       || mfe.guards.length === 0
       || (mfe.guards.length > 0 && typeof mfe.guards[0] === 'string')) {
     return {
-      matcher: shellPath(mfe.path),
+      matcher: shellPath(mfe.prefix),
       component: WebComponentWrapper,
       data: {
         type: 'module',
@@ -27,7 +27,7 @@ export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
       || mfe.roles === null
       || mfe.roles.length === 0) {
     return {
-      matcher: shellPath(mfe.path),
+      matcher: shellPath(mfe.prefix),
       component: WebComponentWrapper,
       data: {
         type: 'module',
@@ -39,7 +39,7 @@ export function microFrontEndRoute(mfe: MicroFrontEndRoute) : Route {
   }
   // provided guard(s) and role(s). Do full check
   return {
-    matcher: shellPath(mfe.path),
+    matcher: shellPath(mfe.prefix),
     component: WebComponentWrapper,
     data: {
       type: 'module',

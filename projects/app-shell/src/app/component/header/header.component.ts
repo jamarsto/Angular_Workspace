@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { activeModulePath } from 'lib-micro-front-end';
 import { MenuItemsService } from '../../service/menu-items/menu-items.service';
-import { navBar } from '../../app-routing.module';
+import { modules } from '../../app-routing.module';
 
 @Component({
   selector: 'header-component',
@@ -10,12 +10,12 @@ import { navBar } from '../../app-routing.module';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  navBar = navBar;
+  modules = modules;
 
   constructor(private menuItemService: MenuItemsService) {}
 
   ngOnInit(): void {
-    this.navBar.forEach((entry) => this
+    this.modules.forEach((entry) => this
         .menuItemService
         .getMenuItemsForModule(entry.name)
         .subscribe((children) => entry.items = children));

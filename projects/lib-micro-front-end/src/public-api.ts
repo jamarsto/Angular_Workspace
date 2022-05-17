@@ -12,5 +12,7 @@ export * from './lib/function/sync-route-module/sync-route.module.function';
 export * from './lib/function/sync-route-shell/sync-route.shell.function';
 export * from './lib/module/auth-config/auth-config.module';
 export * from './lib/module/micro-front-end/micro-front-end.module';
+export * from './lib/types/menu-item/menu-item.type'
+export * from './lib/types/module/module.type'
 export * from './lib/service/all-routes-guard/all-routes-guard.service';
 export * from './lib/service/partial-routes-guard/partial-routes-guard.service';

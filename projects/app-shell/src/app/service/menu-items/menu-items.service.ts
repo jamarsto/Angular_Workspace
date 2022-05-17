@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
+import { MenuItem } from 'lib-micro-front-end';
 import { Observable } from 'rxjs';
 
-export type MenuItem = { title: string, link: string, fullMatch: boolean }
 
 @Injectable({
   providedIn: 'root'

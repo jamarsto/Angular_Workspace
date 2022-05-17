@@ -1,32 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoLoginAllRoutesWithRoleGuard, microFrontEndRoute, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
-import { MenuItem } from './service/menu-items/menu-items.service';
+import { AutoLoginAllRoutesWithRoleGuard, microFrontEndRoute, Module, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
 
-export const moduleByPath: Map<string,string> = new Map<string,string>([
-  ['retail', 'app-app1'],
-  ['business', 'app-app2']
-]);
-
-export const pathByModule: Map<string,string> = new Map<string,string>([
-  ['app-app1', 'retail'],
-  ['app-app2', 'business']
-]);
-
-export type Menu = { title: string, name: string, prefix: string, items: MenuItem[] }
-
-export const navBar: Menu[] = [
-  {title: 'Retail', name: 'app-app1', prefix: 'retail', items: []},
-  {title: 'Business', name: 'app-app2', prefix: 'business', items: []},
+export const modules: Module[] = [
+  {title: 'Retail', name: 'app-app1', prefix: 'retail', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] },
+  {title: 'Business', name: 'app-app2', prefix: 'business', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN','USER'] },
 ];
 
-const routes: Routes = [
-  { path: '', redirectTo: 'retail', pathMatch: 'full' },
-  { path: 'unauthorized', component: UnauthorisedComponent },
-  microFrontEndRoute({ path: 'retail', name: 'app-app1', guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] }),
-  microFrontEndRoute({ path: 'business', name: 'app-app2', guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] }),
-  { path: '**', component: NotFoundComponent }
-];
+export const moduleByPath: Map<string,string> = new Map<string,string>();
+modules.forEach((item) => moduleByPath.set(item.prefix, item.name));
+
+export const pathByModule: Map<string,string> = new Map<string,string>();
+modules.forEach((item) => pathByModule.set(item.name, item.prefix));
+
+const routes: Routes = [];
+routes.push({ path: '', redirectTo: 'retail', pathMatch: 'full' });
+routes.push({ path: 'unauthorized', component: UnauthorisedComponent });
+modules.forEach((module) => routes.push(microFrontEndRoute(module)));
+routes.push({ path: '**', component: NotFoundComponent });
 
 @NgModule({
   imports: [
