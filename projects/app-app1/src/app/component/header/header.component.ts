@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { activeModulePath } from 'lib-micro-front-end';
-import { MenuItems, Modules } from 'lib-micro-front-end';
-import {default as jsonMenuItems} from '../../../../src/assets/menu.json';
+import { Modules } from 'lib-micro-front-end';
+import { shellModules } from '../../remote-app/remote-app-routing.module';
 
 @Component({
   selector: 'header-component',
@@ -10,7 +10,7 @@ import {default as jsonMenuItems} from '../../../../src/assets/menu.json';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  modules: Modules = [{name: 'app-app1', title: 'Retail', prefix: 'retail', items: jsonMenuItems as MenuItems }];
+  modules: Modules = shellModules;
 
   constructor() {}
 
