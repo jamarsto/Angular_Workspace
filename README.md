@@ -14,7 +14,7 @@ The framework here demonstrates the following features:
   - Vue
   - AngularJS
   - Svelte
-- [Router](https://angular.io/guide/router) synchronisation between the Shell and Modules
+- [Router](https://angular.io/guide/router) synchronisation between the Shell and Modules using [Custom Events](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent)
 - Dynamic [Navbar](https://getbootstrap.com/docs/5.0/components/navbar/) generation in Shell from Modules
 - Cross Shell and Module [Authentication](https://www.npmjs.com/package/angular-auth-oidc-client) & Authorisation using OIDC Code Flow with [PKCE](https://oauth.net/2/pkce/)
 
