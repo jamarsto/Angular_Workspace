@@ -1,4 +1,4 @@
-![Build Status](https://github.com/github/docs/actions/workflows/kiunzi.yml/badge.svg)
+![Build Status](https://github.com/github/docs/actions/workflows/kiunzi.yaml/badge.svg)
 
 # Kiunzi
 
