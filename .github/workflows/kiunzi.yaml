@@ -17,9 +17,9 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Build
-      run: npm run build:app-app1:ci
+      run: npm run build:app-app1-ci
     - name: Test
-      run: npm run test:app-app1:ci
+      run: npm run test:app-app1-ci
     - name: Archive build
       if: success()
       uses: actions/upload-artifact@v1
