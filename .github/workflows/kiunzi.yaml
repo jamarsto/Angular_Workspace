@@ -10,6 +10,7 @@ on:
     - package-lock.json
     - package.json
     - tsconfig.json
+  workflow_dispatch:
 jobs:
   build:
     name: Build and Test
