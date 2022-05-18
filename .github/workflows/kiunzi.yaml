@@ -18,18 +18,32 @@ jobs:
       run: npm ci
     - name: Build Library
       run: npm run build:lib-micro-front-end-ci
+    - name: Test Library
+      run: npm run test:lib-micro-front-end-ci
     - name: Build App1
       run: npm run build:app-app1-ci
+    - name: Test App1
+      run: npm run test:app-app1-ci
     - name: Build App2
       run: npm run build:app-app2-ci
+    - name: Test App2
+      run: npm run test:app-app2-ci
     - name: Build Shell
       run: npm run build:app-shell-ci
+    - name: Test Shell
+      run: npm run test:app-shell-ci
     - name: Archive build
       if: success()
       uses: actions/upload-artifact@v1
       with:
         name: deploy_dist
         path: dist
+    - name: Archive Code Coverage Result
+      if: success()
+      uses: actions/upload-artifact@v1
+      with:
+        name: deploy_coverage
+        path: coverage
   deploy:
     runs-on: ubuntu-latest
     needs: build

@@ -9,8 +9,6 @@ import { moduleByPath, pathByModule } from './app-routing.module';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
-  title = 'app-shell';
-
   constructor(private router: Router) {}
 
   ngOnInit(): void {

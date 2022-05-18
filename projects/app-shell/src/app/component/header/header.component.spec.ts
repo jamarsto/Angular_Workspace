@@ -1,4 +1,8 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MenuItemsService } from '../../service/menu-items/menu-items.service';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -7,7 +11,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ HeaderComponent ],
+      imports: [  NgbModule, HttpClientTestingModule, RouterTestingModule ],
+      providers: [ MenuItemsService ]
     })
     .compileComponents();
   });

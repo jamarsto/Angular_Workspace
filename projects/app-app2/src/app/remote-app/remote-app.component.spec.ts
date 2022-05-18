@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { RemoteAppComponent } from './remote-app.component';
 
 describe('RemoteAppComponent', () => {
@@ -7,7 +8,8 @@ describe('RemoteAppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemoteAppComponent ]
+      declarations: [ RemoteAppComponent ],
+      imports: [ RouterTestingModule ]
     })
     .compileComponents();
   });

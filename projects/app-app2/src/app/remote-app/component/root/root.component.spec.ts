@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { HeaderComponent } from './component/header/header.component';
 
 import { RootComponent } from './root.component';
 
@@ -8,7 +12,8 @@ describe('RootComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RootComponent ]
+      declarations: [ RootComponent, HeaderComponent ],
+      imports: [ NgbModule, RouterTestingModule ]
     })
     .compileComponents();
   });
