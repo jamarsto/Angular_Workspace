@@ -1,4 +1,4 @@
-name: Kiunzi
+name: Kiunzi Micro-frontend
 on:
   push:
     branches:

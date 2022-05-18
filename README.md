@@ -1,6 +1,6 @@
 [![Build Status](https://github.com/jamarsto/kiunzi-microfrontends/actions/workflows/kiunzi.yaml/badge.svg)](https://github.com/jamarsto/kiunzi-microfrontends/actions)
 
-# Kiunzi
+# Kiunzi Micro Frontend Example
 
 Kiunzi is a microservices platform that provides the scaffolding needed by modern cloud native microservices based applications.
 
