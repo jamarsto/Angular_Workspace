@@ -13,7 +13,9 @@
         "build:lib-micro-front-end": "ng build lib-micro-front-end",
         "build:app-app1": "ng build app-app1",
         "build:app-app2": "ng build app-app2",
-        "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+        "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+        "build:app-app1-ci": "ng build app-app1 --prod --sourceMap=false --base-href jamarsto/kiunzu-microfrontends",
+        "test:app-app1-ci": "ng test app-app1 --watch=false --code-coverage --source-map true"
     },
     "private": true,
     "dependencies": {
