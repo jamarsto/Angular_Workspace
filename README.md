@@ -1,3 +1,5 @@
+![Build Status](https://github.com/jamarsto/kiunzi-microfrontends/actions/workflows/kiunzi.yml/badge.svg)
+
 # Kiunzi
 
 <!-- [![Build Status](https://github.com/jamarsto/Angular_Workspace/actions/workflows/workflow_file/badge.svg)](https://github.com/jamarsto/Angular_Workspace/actions/workflows/workflow_file/badge.svg) -->
