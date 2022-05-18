@@ -3,6 +3,13 @@ on:
   push:
     branches:
     - 'master'
+    paths:
+    - projects/**
+    - json.type.d.ts
+    - angular.json
+    - package-lock.json
+    - package-lock.json
+    - tsconfig.json
 jobs:
   build:
     name: Build and Test
