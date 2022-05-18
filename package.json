@@ -15,13 +15,13 @@
         "build:app-app2": "ng build app-app2",
         "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
         "build:lib-micro-front-end-ci": "ng build lib-micro-front-end",
-        "test:lib-micro-front-end-ci": "ng test lib-micro-front-end --watch=false --code-coverage --source-map true",
+        "test:lib-micro-front-end-ci": "ng test lib-micro-front-end --watch=false --code-coverage --source-map true --browsers=ChromeHeadlessCI",
         "build:app-app1-ci": "ng build app-app1",
-        "test:app-app1-ci": "ng test app-app1 --watch=false --code-coverage --source-map true",
+        "test:app-app1-ci": "ng test app-app1 --watch=false --code-coverage --source-map true --browsers=ChromeHeadlessCI",
         "build:app-app2-ci": "ng build app-app2",
-        "test:app-app2-ci": "ng test app-app2 --watch=false --code-coverage --source-map true",
+        "test:app-app2-ci": "ng test app-app2 --watch=false --code-coverage --source-map true --browsers=ChromeHeadlessCI",
         "build:app-shell-ci": "ng build app-app2",
-        "test:app-shell-ci": "ng test app-shell --watch=false --code-coverage --source-map true"
+        "test:app-shell-ci": "ng test app-shell --watch=false --code-coverage --source-map true --browsers=ChromeHeadlessCI"
     },
     "private": true,
     "dependencies": {
