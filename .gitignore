@@ -5,8 +5,3 @@ node_modules
 .editorconfig
 .angular
 coverage
-coverage/
-coverage/*
-/coverage
-/coverage/
-/coverage/*
