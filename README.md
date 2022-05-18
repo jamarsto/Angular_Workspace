@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/jamarsto/kiunzi-microfrontends/actions/workflows/kiunzi.yaml/badge.svg)](https://github.com/jamarsto/kiunzi-microfrontends/actions)
+[![Build Status](https://github.com/jamarsto/kiunzi-microfrontends/actions/workflows/kiunzi.yaml/badge.svg)](https://github.com/jamarsto/kiunzi-microfrontends/actions/workflows/kiunzi.yaml)
 
 # Kiunzi Micro Frontend Example
 
