@@ -16,37 +16,37 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout 🛎️
       uses: actions/checkout@v1
-    - name: Use Node 18.x
+    - name: Use Node 18.x 📦
       uses: actions/setup-node@v1
       with:
         node-version: '18.x'
-    - name: Install dependencies
+    - name: Install dependencies 📁
       run: npm ci
-    - name: Build Library
+    - name: Build Library 🔧
       run: npm run build:lib-micro-front-end-ci
     - name: Test Library
       run: npm run test:lib-micro-front-end-ci
-    - name: Build App1
+    - name: Build App1 🔧
       run: npm run build:app-app1-ci
     - name: Test App1
       run: npm run test:app-app1-ci
-    - name: Build App2
+    - name: Build App2 🔧
       run: npm run build:app-app2-ci
     - name: Test App2
       run: npm run test:app-app2-ci
-    - name: Build Shell
+    - name: Build Shell 🔧
       run: npm run build:app-shell-ci
     - name: Test Shell
       run: npm run test:app-shell-ci
-    - name: Archive build
+    - name: Archive build 📁
       if: success()
       uses: actions/upload-artifact@v1
       with:
         name: deploy_dist
         path: dist
-    - name: Archive Code Coverage Result
+    - name: Archive Code Coverage Result 📁
       if: success()
       uses: actions/upload-artifact@v1
       with:
