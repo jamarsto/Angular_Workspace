@@ -8,10 +8,8 @@ import { moduleByPath, pathByModule } from './app-routing.module';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
-export class AppComponent implements OnInit {
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
+export class AppComponent {
+  constructor(private router: Router) {
     syncRouteShell(this.router, moduleByPath, pathByModule);
   }
 }

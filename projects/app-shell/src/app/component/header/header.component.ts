@@ -11,6 +11,7 @@ import { modules } from '../../app-routing.module';
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
   modules: Modules = modules;
+  _localActiveModulePath = activeModulePath;
 
   constructor(private menuItemService: MenuItemsService) {}
 
@@ -26,7 +27,7 @@ export class HeaderComponent implements OnInit {
   }
 
   modulePathActiveClass(activeClass: string, path: string): string {
-    if(activeModulePath() === path) {
+    if(this._localActiveModulePath() === path) {
       return activeClass;
     }
     return '';

@@ -24,4 +24,24 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should collapse', () => {
+    component.collapse();
+    expect(component.isCollapsed).toBeTrue();
+  })
+  it('should toggle', () => {
+    let currentState: boolean = component.isCollapsed;
+    component.toggle();
+    expect(component.isCollapsed).toBe(!currentState);
+  })
+
+  it('should match start of active path ', () => {
+    spyOn(component, '_localActiveModulePath').and.returnValue('retail');
+    expect(component.modulePathActiveClass('active','retail')).toBe('active');
+  })
+
+  it('should not match start of active path ', () => {
+    spyOn(component, '_localActiveModulePath').and.returnValue('');
+    expect(component.modulePathActiveClass('active','retail')).toBe('');
+  })
 });

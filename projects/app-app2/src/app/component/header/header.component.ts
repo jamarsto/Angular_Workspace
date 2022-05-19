@@ -10,6 +10,7 @@ import { shellModule } from '../../remote-app/remote-app-routing.module';
 export class HeaderComponent implements OnInit {
   isCollapsed: boolean = true;
   module: Module = shellModule;
+  _localActiveModulePath = activeModulePath;
 
   constructor() {}
 
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   modulePathActiveClass(activeClass: string, path: string): string {
-    if(activeModulePath() === path) {
+    if(this._localActiveModulePath() === path) {
       return activeClass;
     }
     return '';
