@@ -1,4 +1,4 @@
-name: Kiunzi Micro-frontends
+name: Kiunzi Micro-frontend Examples
 on:
   push:
     branches:
