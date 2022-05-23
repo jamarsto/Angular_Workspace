@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { syncRouteShell } from 'lib-micro-front-end';
-import { moduleByPath, pathByModule } from './app-routing.module';
+import { SyncRouteShell } from 'lib-micro-front-end';
+import { customShellRoutes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { moduleByPath, pathByModule } from './app-routing.module';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  constructor(private router: Router) {
-    syncRouteShell(this.router, moduleByPath, pathByModule);
+  constructor(private router: Router, private syncRouteShell: SyncRouteShell) {
+    this.syncRouteShell.sync(this.router, customShellRoutes);
   }
 }

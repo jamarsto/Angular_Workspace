@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { activeModulePath, Module } from 'lib-micro-front-end';
+import { ActiveModulePath, Module } from 'lib-micro-front-end';
 import { shellModule } from '../../remote-app/remote-app-routing.module';
 
 @Component({
@@ -10,9 +10,8 @@ import { shellModule } from '../../remote-app/remote-app-routing.module';
 export class HeaderComponent implements OnInit {
   isCollapsed: boolean = true;
   module: Module = shellModule;
-  _localActiveModulePath = activeModulePath;
 
-  constructor() {}
+  constructor(private activeModulePath: ActiveModulePath) {}
 
   ngOnInit(): void {}
 
@@ -21,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   modulePathActiveClass(activeClass: string, path: string): string {
-    if(this._localActiveModulePath() === path) {
+    if(this.activeModulePath.get() === path) {
       return activeClass;
     }
     return '';

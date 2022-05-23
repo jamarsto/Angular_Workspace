@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { activeModulePath, Modules } from 'lib-micro-front-end';
+import { ActiveModulePath, Modules } from 'lib-micro-front-end';
 import { MenuItemsService } from '../../service/menu-items/menu-items.service';
-import { modules } from '../../app-routing.module';
+import { customShellRoutes } from '../../app-routing.module';
 
 @Component({
   selector: 'header-component',
@@ -10,10 +10,9 @@ import { modules } from '../../app-routing.module';
 })
 export class HeaderComponent implements OnInit {
   isCollapsed = true;
-  modules: Modules = modules;
-  _localActiveModulePath = activeModulePath;
+  modules: Modules = customShellRoutes.moduleRoutes;
 
-  constructor(private menuItemService: MenuItemsService) {}
+  constructor(private menuItemService: MenuItemsService, private activeModulePath: ActiveModulePath) {}
 
   ngOnInit(): void {
     this.modules.forEach((entry) => this
@@ -27,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   modulePathActiveClass(activeClass: string, path: string): string {
-    if(this._localActiveModulePath() === path) {
+    if(this.activeModulePath.get() === path) {
       return activeClass;
     }
     return '';

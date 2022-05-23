@@ -1,10 +1,6 @@
-import { Route, Routes } from '@angular/router';
-import { modulePath } from '../module-path/module-path.function';
+import { Route, UrlMatcher, UrlSegment } from '@angular/router';
 import { RootComponent } from '../../component/root/root.component';
-import { Guards } from '../../types/guards/guards.type';
-import { Roles } from '../../types/roles/roles.type';
-
-export type ModuleRoute = { component?: any, guards?: Guards, roles?: Roles, children: Routes }
+import { ModuleRoute } from '../../types/module-route/module-route.type';
 
 export function moduleRoute(moduleRoute: ModuleRoute) : Route {
   const moduleRouteComponent: any =
@@ -42,4 +38,13 @@ export function moduleRoute(moduleRoute: ModuleRoute) : Route {
     data: { role: moduleRoute.roles },
     children: moduleRoute.children
   };
+}
+
+function modulePath(): UrlMatcher {
+  return (url: UrlSegment[]) => {
+    if(url.length > 0) {
+      return ({ consumed: [url[0]] });
+    }
+    return null;
+  }
 }

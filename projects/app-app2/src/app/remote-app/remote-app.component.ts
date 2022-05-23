@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { syncRouteModule } from 'lib-micro-front-end';
+import { SyncRouteModule } from 'lib-micro-front-end';
 import { shellModule } from './remote-app-routing.module';
 
 @Component({
@@ -8,9 +8,9 @@ import { shellModule } from './remote-app-routing.module';
   styleUrls: ['./remote-app.component.sass']
 })
 export class RemoteAppComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private syncRouteModule: SyncRouteModule) {}
 
   ngOnInit(): void {
-    syncRouteModule(this.router, shellModule.name);
+    this.syncRouteModule.sync(this.router, shellModule.name);
   }
 }

@@ -1,8 +1,6 @@
-import { Route } from '@angular/router';
+import { Route, UrlMatcher, UrlSegment } from '@angular/router';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
-import { shellPath } from '../shell-path/shell-path.function';
 import { Module } from '../../types/module/module.type';
-
 
 export function microFrontEndRoute(module: Module) : Route {
   // provided a role without a guard. Hence don't try to guard
@@ -48,5 +46,14 @@ export function microFrontEndRoute(module: Module) : Route {
       elementName: 'mfe-' + module.name,
       role: module.roles,
     } as WebComponentWrapperOptions, canLoad: module.guards, canActivate: module.guards, canActivateChild: module.guards
+  }
+}
+
+function shellPath(shellPath: string): UrlMatcher {
+  return (url: UrlSegment[]) => {
+    if(url.length > 0 && url[0].path === shellPath) {
+      return ({ consumed: url });
+    }
+    return null;
   }
 }
