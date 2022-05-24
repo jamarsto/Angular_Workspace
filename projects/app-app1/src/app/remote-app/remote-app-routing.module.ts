@@ -5,11 +5,11 @@ import { HomeComponent } from './children/home/home.component';
 import { PathComponent } from './children/path/path.component';
 import { PaymentComponent } from './children/payment/payment.component';
 import { RootComponent } from './root/root.component';
-import {default as jsonMenuItems} from '../../../src/assets/menu.json';
+import * as jsonMenuItems from '../../../src/assets/menu.json';
 
 // shellModule.name is used to in setting up route synchronisation, so is a vital attribute
 // the shellModule as a whole is also used by the local shell simulator
-export const shellModule: Module = {name: 'app-app1', title: 'app-app1', prefix: 'app-app1', items: jsonMenuItems as MenuItems };
+export const shellModule: Module = {name: 'app-app1', title: 'app-app1', prefix: 'app-app1', items: jsonMenuItems.menuItems as MenuItems };
 
 // customRoutes.headRoutes and customRoutes.tailRoutes are used by the local shell simulator, they cannot be accessed from the real shell.
 // customRoutes.tailRoutes could only match a path of '**' and only then if there is no '**' path as a child in the moduleRoute so is usually left empty.
@@ -33,4 +33,4 @@ const routes: Routes = initialiseModuleRoutes(customRoutes);
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RemoteAppRoutingModule { }
+export class RemoteAppRoutingModule {}

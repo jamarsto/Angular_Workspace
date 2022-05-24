@@ -1,5 +1,7 @@
-[
-    { "title": "Home", "link": "/", "fullMatch": true },
-    { "title": "Path", "link": "/path", "fullMatch": false },
-    { "title": "Payment", "link": "/payment", "fullMatch": false }
-]
+{
+    "menuItems": [
+        { "title": "Home", "link": "/", "fullMatch": true },
+        { "title": "Path", "link": "/path", "fullMatch": false },
+        { "title": "Payment", "link": "/payment", "fullMatch": false }
+    ]
+}
