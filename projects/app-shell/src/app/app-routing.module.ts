@@ -8,8 +8,8 @@ export const customShellRoutes: CustomShellRoutes = {
 		{ path: 'unauthorized', component: UnauthorisedComponent }
 	],
 	moduleRoutes: [
-		{ title: 'Retail', name: 'app1', prefix: 'retail', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] },
-		{ title: 'Business', name: 'app2', prefix: 'business', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] }
+		{ title: 'Retail', name: 'app-app1', prefix: 'retail', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] },
+		{ title: 'Business', name: 'app-app2', prefix: 'business', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] }
 	],
 	tailRoutes: [
 		{ path: '**', component: NotFoundComponent }
