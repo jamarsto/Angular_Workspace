@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoLoginAllRoutesWithRoleGuard, CustomShellRoutes, initialiseShellRoutes, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
+import { AutoLoginAllRoutesWithRoleGuard, CustomShellRoutes, initialiseShellRoutes, NotFoundComponent, UnauthorisedComponent } from '@jamarsto/kiunzi-micro-frontend-tools';
 
 export const customShellRoutes: CustomShellRoutes = {
 	headRoutes: [

@@ -33,6 +33,7 @@ module.exports = {
                 "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "@angular/platform-browser": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
                 "angular-auth-oidc-client": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+                "@jamarsto/kiunzi-micro-frontend-tools": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
                 ...sharedMappings.getDescriptors()
             })

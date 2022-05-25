@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SyncRouteShell } from 'lib-micro-front-end';
+import { SyncRouteShell } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { customShellRoutes } from './app-routing.module';
 
 @Component({

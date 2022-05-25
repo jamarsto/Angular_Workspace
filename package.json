@@ -37,6 +37,7 @@
         "@angular/platform-browser": "~13.3.0",
         "@angular/platform-browser-dynamic": "~13.3.0",
         "@angular/router": "~13.3.0",
+        "@jamarsto/kiunzi-micro-frontend-tools": "^0.0.32",
         "@ng-bootstrap/ng-bootstrap": "^12.1.1",
         "@popperjs/core": "^2.10.2",
         "angular-auth-oidc-client": "14.0.0",

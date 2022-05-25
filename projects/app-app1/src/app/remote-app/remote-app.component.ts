@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SyncRouteModule } from 'lib-micro-front-end';
+import { SyncRouteModule } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { shellModule } from './remote-app-routing.module';
 
 @Component({

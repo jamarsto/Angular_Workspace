@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActiveModulePath, Module } from 'lib-micro-front-end';
+import { ActiveModulePath, Module } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { shellModule } from '../../remote-app/remote-app-routing.module';
 
 @Component({

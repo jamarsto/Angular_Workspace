@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoLoginAllRoutesWithRoleGuard, CustomModuleRoutes, initialiseModuleRoutes, MenuItems, Module, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
+import { AutoLoginAllRoutesWithRoleGuard, CustomModuleRoutes, initialiseModuleRoutes, MenuItems, Module, NotFoundComponent, UnauthorisedComponent } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { HomeComponent } from './children/home/home.component';
 import { PathComponent } from './children/path/path.component';
 import { PaymentComponent } from './children/payment/payment.component';
 import { RootComponent } from './root/root.component';
-import * as jsonMenuItems from '../../../src/assets/menu.json';
+import { default as jsonMenuItems } from '../../../src/assets/menu.json';
 
 // shellModule.name is used to in setting up route synchronisation, so is a vital attribute
 // the shellModule as a whole is also used by the local shell simulator

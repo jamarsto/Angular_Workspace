@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActiveModulePath, Modules } from 'lib-micro-front-end';
+import { ActiveModulePath, Modules } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { MenuItemsService } from '../../service/menu-items/menu-items.service';
 import { customShellRoutes } from '../../app-routing.module';
 
