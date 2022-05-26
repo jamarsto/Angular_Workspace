@@ -39,8 +39,8 @@ jobs:
       run: npm run test:app-app2-ci
     - name: Build Shell
       run: npm run build:app-shell-ci
-    - name: Test Shell
-      run: npm run test:app-shell-ci
+#    - name: Test Shell
+#      run: npm run test:app-shell-ci
     - name: Archive build
       if: success()
       uses: actions/upload-artifact@v1
