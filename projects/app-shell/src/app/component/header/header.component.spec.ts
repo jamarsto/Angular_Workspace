@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ActiveModulePath, MenuItems } from 'lib-micro-front-end';
+import { ActiveModulePath, MenuItems } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { of } from 'rxjs';
 import { MenuItemsService } from '../../service/menu-items/menu-items.service';
 import { HeaderComponent } from './header.component';

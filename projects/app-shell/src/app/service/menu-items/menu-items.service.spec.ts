@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { MenuItemsService } from './menu-items.service';
-import { MenuItem, MenuItems } from 'lib-micro-front-end';
+import { MenuItem, MenuItems } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

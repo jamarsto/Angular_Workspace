@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ActiveModulePath } from 'lib-micro-front-end';
+import { ActiveModulePath } from '@jamarsto/kiunzi-micro-frontend-tools';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
