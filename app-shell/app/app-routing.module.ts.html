@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -90,8 +90,7 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -100,16 +99,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,24 +119,23 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoLoginAllRoutesWithRoleGuard, microFrontEndRoute, Modules, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
+import { AutoLoginAllRoutesWithRoleGuard, CustomShellRoutes, initialiseShellRoutes, NotFoundComponent, UnauthorisedComponent } from '@jamarsto/kiunzi-micro-frontend-tools';
 &nbsp;
-export const modules: Modules = [
-  {title: 'Retail', name: 'app-app1', prefix: 'retail', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] },
-  {title: 'Business', name: 'app-app2', prefix: 'business', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN','USER'] },
-];
+export const customShellRoutes: CustomShellRoutes = {
+	headRoutes: [
+		{ path: '', redirectTo: 'retail', pathMatch: 'full' },
+		{ path: 'unauthorized', component: UnauthorisedComponent }
+	],
+	moduleRoutes: [
+		{ title: 'Retail', name: 'app-app1', prefix: 'retail', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] },
+		{ title: 'Business', name: 'app-app2', prefix: 'business', items: [], guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'] }
+	],
+	tailRoutes: [
+		{ path: '**', component: NotFoundComponent }
+	]
+}
 &nbsp;
-export const moduleByPath: Map&lt;string,string&gt; = new Map&lt;string,string&gt;();
-modules.forEach((item) =&gt; moduleByPath.set(item.prefix, item.name));
-&nbsp;
-export const pathByModule: Map&lt;string,string&gt; = new Map&lt;string,string&gt;();
-modules.forEach((item) =&gt; pathByModule.set(item.name, item.prefix));
-&nbsp;
-const routes: Routes = [];
-routes.push({ path: '', redirectTo: 'retail', pathMatch: 'full' });
-routes.push({ path: 'unauthorized', component: UnauthorisedComponent });
-modules.forEach((module) =&gt; routes.push(microFrontEndRoute(module)));
-routes.push({ path: '**', component: NotFoundComponent });
+const routes: Routes = initialiseShellRoutes(customShellRoutes);
 &nbsp;
 @NgModule({
   imports: [
@@ -154,7 +151,7 @@ export class AppRoutingModule {}
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu May 19 2022 21:44:48 GMT+0000 (Coordinated Universal Time)
+                at Fri May 27 2022 07:16:50 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../prettify.js"></script>
         <script>

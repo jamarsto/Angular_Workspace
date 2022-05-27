@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
@@ -90,7 +90,18 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -101,6 +112,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,6 +124,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -119,31 +137,40 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AutoLoginAllRoutesWithRoleGuard, MenuItems, Module, moduleRoute, NotFoundComponent, UnauthorisedComponent } from 'lib-micro-front-end';
-import { HomeComponent } from './component/home/home.component';
-import { PathComponent } from './component/path/path.component';
-import { PaymentComponent } from './component/payment/payment.component';
-import { RootComponent } from './component/root/root.component';
-import {default as jsonMenuItems} from '../../../src/assets/menu.json';
+import { AutoLoginAllRoutesWithRoleGuard, CustomModuleRoutes, initialiseModuleRoutes, MenuItems, Module, NotFoundComponent, UnauthorisedComponent } from '@jamarsto/kiunzi-micro-frontend-tools';
+import { HomeComponent } from './children/home/home.component';
+import { PathComponent } from './children/path/path.component';
+import { PaymentComponent } from './children/payment/payment.component';
+import { RootComponent } from './root/root.component';
+import { default as jsonMenuItems } from '../../../src/assets/menu.json';
 &nbsp;
-export const shellModule: Module = {name: 'app-app1', title: 'Retail', prefix: 'retail', items: jsonMenuItems as MenuItems };
+// shellModule.name is used to in setting up route synchronisation, so is a vital attribute
+// the shellModule as a whole is also used by the local shell simulator
+export const shellModule: Module = {name: 'app-app1', title: 'app-app1', prefix: 'app-app1', items: jsonMenuItems.menuItems as MenuItems };
 &nbsp;
-const routes: Routes = [
-  { path: '', redirectTo: shellModule.prefix, pathMatch: 'full' },
-  { path: 'unauthorized', component: UnauthorisedComponent },
-  moduleRoute({ component: RootComponent, guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'], children: [
+// customRoutes.headRoutes and customRoutes.tailRoutes are used by the local shell simulator, they cannot be accessed from the real shell.
+// customRoutes.tailRoutes could only match a path of '**' and only then if there is no '**' path as a child in the moduleRoute so is usually left empty.
+const customRoutes: CustomModuleRoutes = {
+  headRoutes: [
+    { path: '', redirectTo: shellModule.prefix, pathMatch: 'full' },
+    { path: 'unauthorized', component: UnauthorisedComponent }
+  ],
+  moduleRoute: { component: RootComponent, guards: [AutoLoginAllRoutesWithRoleGuard], roles: ['ADMIN', 'USER'], children: [
     { path: '', component: HomeComponent },
     { path: 'path', component: PathComponent },
     { path: 'payment', component: PaymentComponent },
     { path: '**', component: NotFoundComponent }
-  ]}),
-];
+  ]},
+  tailRoutes: []
+}
+&nbsp;
+const routes: Routes = initialiseModuleRoutes(customRoutes);
 &nbsp;
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class RemoteAppRoutingModule { }
+export class RemoteAppRoutingModule {}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -151,7 +178,7 @@ export class RemoteAppRoutingModule { }
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu May 19 2022 21:42:29 GMT+0000 (Coordinated Universal Time)
+                at Fri May 27 2022 07:14:25 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
