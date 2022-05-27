@@ -21,7 +21,7 @@ describe('HeaderComponent', () => {
       imports: [  NgbModule, HttpClientTestingModule, RouterTestingModule ],
       providers: [
         { provide: MenuItemsService, useValue: menuItemsServiceSpy },
-        { provide: ActiveModulePath, userValue: activeModulePathSpy }
+        { provide: ActiveModulePath, useValue: activeModulePathSpy }
       ]
     })
     .compileComponents();
@@ -48,21 +48,27 @@ describe('HeaderComponent', () => {
   })
 
   it('should match start of active path ', () => {
-    getActiveModulePath(component).get.and.ReturnValue('retail');
+    getActiveModulePath(component).get.and.returnValue('retail');
     expect(component.modulePathActiveClass('active','retail')).toBe('active');
   })
 
   it('should not match start of active path ', () => {
-    getActiveModulePath(component).get.and.ReturnValue('');
+    getActiveModulePath(component).get.and.returnValue('');
     expect(component.modulePathActiveClass('active','retail')).toBe('');
   })
 
   it('should have 1 menu items', () => {
+    expect(component.modules).toBeDefined();
     expect(component.modules.length).toBeGreaterThan(0);
+    expect(component.modules[0].items).toBeDefined();
     expect(component.modules[0].items.length).toBe(1);
   })
 });
 
 function getActiveModulePath(component: any): any {
   return component.activeModulePath;
+}
+
+function getModules(component: any): any {
+  return component.modules;
 }

@@ -13,7 +13,7 @@ describe('HeaderComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       imports: [NgbModule, RouterTestingModule ],
-      providers: [ { provide: ActiveModulePath, userValue: activeModulePathSpy } ]
+      providers: [ { provide: ActiveModulePath, useValue: activeModulePathSpy } ]
     })
     .compileComponents();
   });
@@ -50,5 +50,5 @@ describe('HeaderComponent', () => {
 });
 
 function getActiveModulePath(component: any): any {
-  return component.activeComponentPath;
+  return component.activeModulePath;
 }
